@@ -97,6 +97,12 @@ function saveDiskHallTickets(data: HallTicket[]) {
   }
 }
 
+export function getAppUrl(): string {
+  let url = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  if (url.endsWith("/")) url = url.slice(0, -1);
+  return url;
+}
+
 export type Department = {
   id: number;
   name: string;
@@ -1406,11 +1412,9 @@ export const dataStore = {
       }
     }
     for (const ticket of list) {
-      if (!ticket.qrDataUrl) {
-        ticket.qrDataUrl = await generateQrDataUrl(
-          `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/verify/${ticket.verifyCode}`
-        );
-      }
+      ticket.qrDataUrl = await generateQrDataUrl(
+        `${getAppUrl()}/verify/${ticket.verifyCode}`
+      );
     }
     return list;
   },
@@ -1420,11 +1424,9 @@ export const dataStore = {
       try {
         const ticket = await supabaseStore.getHallTicketById(id);
         if (ticket) {
-          if (!ticket.qrDataUrl) {
-            ticket.qrDataUrl = await generateQrDataUrl(
-              `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/verify/${ticket.verifyCode}`
-            );
-          }
+          ticket.qrDataUrl = await generateQrDataUrl(
+            `${getAppUrl()}/verify/${ticket.verifyCode}`
+          );
           return ticket;
         }
       } catch (err) {
@@ -1436,11 +1438,9 @@ export const dataStore = {
 
     const ticket = hallTickets.find((t) => t.id === id);
     if (!ticket) return null;
-    if (!ticket.qrDataUrl) {
-      ticket.qrDataUrl = await generateQrDataUrl(
-        `http://localhost:3000/verify/${ticket.verifyCode}`
-      );
-    }
+    ticket.qrDataUrl = await generateQrDataUrl(
+      `${getAppUrl()}/verify/${ticket.verifyCode}`
+    );
     return ticket;
   },
 
@@ -1464,11 +1464,9 @@ export const dataStore = {
       }
     }
     for (const ticket of list) {
-      if (!ticket.qrDataUrl) {
-        ticket.qrDataUrl = await generateQrDataUrl(
-          `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/verify/${ticket.verifyCode}`
-        );
-      }
+      ticket.qrDataUrl = await generateQrDataUrl(
+        `${getAppUrl()}/verify/${ticket.verifyCode}`
+      );
     }
     return list;
   },
@@ -1627,11 +1625,9 @@ export const dataStore = {
       };
     }
 
-    if (!ticket.qrDataUrl) {
-      ticket.qrDataUrl = await generateQrDataUrl(
-        `http://localhost:3000/verify/${ticket.verifyCode}`
-      );
-    }
+    ticket.qrDataUrl = await generateQrDataUrl(
+      `${getAppUrl()}/verify/${ticket.verifyCode}`
+    );
 
     return {
       valid: ticket.status === "Valid",
@@ -2099,9 +2095,9 @@ export const dataStore = {
       (t) => t.studentId === student.id && t.examinationId === exam.id
     );
 
-    if (ticket && !ticket.qrDataUrl) {
+    if (ticket) {
       ticket.qrDataUrl = await generateQrDataUrl(
-        `http://localhost:3000/verify/${ticket.verifyCode}`
+        `${getAppUrl()}/verify/${ticket.verifyCode}`
       );
     }
 
@@ -2123,7 +2119,7 @@ export const dataStore = {
 
       const verifyCode = `RVHT-25-${student.usn}`;
       const qrDataUrl = await generateQrDataUrl(
-        `http://localhost:3000/verify/${verifyCode}`
+        `${getAppUrl()}/verify/${verifyCode}`
       );
 
       ticket = {

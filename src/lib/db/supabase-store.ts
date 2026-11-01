@@ -822,29 +822,214 @@ export const supabaseStore = {
   },
 
   // =========================================================================
-  // SEATING PLANS
+  // SEATING PLANS (With Supabase Storage Fallback)
   // =========================================================================
   async getSeatingPlans(filters?: { examinationId?: number; roomName?: string }): Promise<SeatingPlan[] | null> {
-    const supabase = getSupabaseServer(); if (!supabase) return null;
-    let query = supabase.from("seating_plans").select("*, examinations(name)").order("exam_date", { ascending: true }).order("room_name", { ascending: true });
-    if (filters?.examinationId) query = query.eq("examination_id", filters.examinationId);
-    if (filters?.roomName) query = query.ilike("room_name", `%${filters.roomName}%`);
-    const { data, error } = await query; if (error || !data) return null;
-    return data.map((row: any) => ({ id: Number(row.id), roomName: row.room_name, examinationId: row.examination_id, examinationName: row.examinations?.name || "Examination", examDate: row.exam_date, session: row.session, totalBenches: row.total_benches, benchesPerRow: row.benches_per_row, benches: (row.benches || []) as Bench[], createdAt: row.created_at, updatedAt: row.updated_at }));
+    const supabase = getSupabaseServer();
+    if (!supabase) return null;
+
+    // 1. Try relational table first if present
+    try {
+      let query = supabase.from("seating_plans").select("*, examinations(name)").order("exam_date", { ascending: true }).order("room_name", { ascending: true });
+      if (filters?.examinationId) query = query.eq("examination_id", filters.examinationId);
+      if (filters?.roomName) query = query.ilike("room_name", `%${filters.roomName}%`);
+      const { data, error } = await query;
+      if (!error && data && data.length > 0) {
+        return data.map((row: any) => ({
+          id: Number(row.id),
+          roomName: row.room_name,
+          examinationId: row.examination_id,
+          examinationName: row.examinations?.name || "Examination",
+          examDate: row.exam_date,
+          session: row.session,
+          totalBenches: row.total_benches,
+          benchesPerRow: row.benches_per_row,
+          benches: (row.benches || []) as Bench[],
+          createdAt: row.created_at,
+          updatedAt: row.updated_at,
+        }));
+      }
+    } catch {
+      // Table doesn't exist, proceed to storage
+    }
+
+    // 2. Fall back to persistent Supabase Storage JSON
+    try {
+      const { data, error } = await supabase.storage.from("student-photos").download("seating-plans.json");
+      if (!error && data) {
+        const text = await data.text();
+        const parsed = JSON.parse(text);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          let list = parsed as SeatingPlan[];
+          if (filters?.examinationId) {
+            list = list.filter((p) => p.examinationId === Number(filters.examinationId));
+          }
+          if (filters?.roomName) {
+            list = list.filter((p) => p.roomName.toLowerCase().includes(filters.roomName!.toLowerCase()));
+          }
+          return list;
+        }
+      }
+    } catch (err) {
+      console.warn("Could not download seating-plans.json from Supabase storage:", err);
+    }
+
+    return null;
   },
+
   async getSeatingPlanById(id: number): Promise<SeatingPlan | null> {
-    const supabase = getSupabaseServer(); if (!supabase) return null;
-    const { data, error } = await supabase.from("seating_plans").select("*, examinations(name)").eq("id", id).single();
-    return error || !data ? null : { id: Number(data.id), roomName: data.room_name, examinationId: data.examination_id, examinationName: data.examinations?.name || "Examination", examDate: data.exam_date, session: data.session, totalBenches: data.total_benches, benchesPerRow: data.benches_per_row, benches: (data.benches || []) as Bench[], createdAt: data.created_at, updatedAt: data.updated_at };
+    const supabase = getSupabaseServer();
+    if (!supabase) return null;
+
+    try {
+      const { data, error } = await supabase.from("seating_plans").select("*, examinations(name)").eq("id", id).single();
+      if (!error && data) {
+        return {
+          id: Number(data.id),
+          roomName: data.room_name,
+          examinationId: data.examination_id,
+          examinationName: data.examinations?.name || "Examination",
+          examDate: data.exam_date,
+          session: data.session,
+          totalBenches: data.total_benches,
+          benchesPerRow: data.benches_per_row,
+          benches: (data.benches || []) as Bench[],
+          createdAt: data.created_at,
+          updatedAt: data.updated_at,
+        };
+      }
+    } catch {
+      // Proceed to storage fallback
+    }
+
+    const plans = await this.getSeatingPlans();
+    return plans?.find((p) => p.id === id) || null;
   },
+
   async saveSeatingPlan(input: Omit<SeatingPlan, "id" | "createdAt" | "updatedAt"> & { id?: number }): Promise<SeatingPlan | null> {
-    const supabase = getSupabaseServer(); if (!supabase) return null;
-    const payload = { examination_id: input.examinationId, room_name: input.roomName, exam_date: input.examDate, session: input.session, total_benches: input.totalBenches, benches_per_row: input.benchesPerRow, benches: input.benches, updated_at: new Date().toISOString() };
-    const query = input.id ? supabase.from("seating_plans").update(payload).eq("id", input.id) : supabase.from("seating_plans").insert(payload);
-    const { data, error } = await query.select("*, examinations(name)").single();
-    return error || !data ? null : { id: Number(data.id), roomName: data.room_name, examinationId: data.examination_id, examinationName: data.examinations?.name || input.examinationName, examDate: data.exam_date, session: data.session, totalBenches: data.total_benches, benchesPerRow: data.benches_per_row, benches: (data.benches || []) as Bench[], createdAt: data.created_at, updatedAt: data.updated_at };
+    const supabase = getSupabaseServer();
+    if (!supabase) return null;
+
+    const payload = {
+      examination_id: input.examinationId,
+      room_name: input.roomName,
+      exam_date: input.examDate,
+      session: input.session,
+      total_benches: input.totalBenches,
+      benches_per_row: input.benchesPerRow,
+      benches: input.benches,
+      updated_at: new Date().toISOString(),
+    };
+
+    // 1. Try relational table
+    try {
+      const query = input.id ? supabase.from("seating_plans").update(payload).eq("id", input.id) : supabase.from("seating_plans").insert(payload);
+      const { data, error } = await query.select("*, examinations(name)").single();
+      if (!error && data) {
+        return {
+          id: Number(data.id),
+          roomName: data.room_name,
+          examinationId: data.examination_id,
+          examinationName: data.examinations?.name || input.examinationName,
+          examDate: data.exam_date,
+          session: data.session,
+          totalBenches: data.total_benches,
+          benchesPerRow: data.benches_per_row,
+          benches: (data.benches || []) as Bench[],
+          createdAt: data.created_at,
+          updatedAt: data.updated_at,
+        };
+      }
+    } catch {
+      // Proceed to storage fallback
+    }
+
+    // 2. Persist to Supabase Storage bucket
+    try {
+      let existing: SeatingPlan[] = [];
+      const { data: fileData, error: fileErr } = await supabase.storage.from("student-photos").download("seating-plans.json");
+      if (!fileErr && fileData) {
+        const text = await fileData.text();
+        const parsed = JSON.parse(text);
+        if (Array.isArray(parsed)) existing = parsed;
+      }
+
+      const now = new Date().toISOString();
+      let resultPlan: SeatingPlan;
+
+      if (input.id) {
+        const idx = existing.findIndex((p) => p.id === input.id);
+        if (idx !== -1) {
+          resultPlan = {
+            ...existing[idx],
+            ...input,
+            id: input.id,
+            updatedAt: now,
+          };
+          existing[idx] = resultPlan;
+        } else {
+          resultPlan = {
+            ...input,
+            id: input.id,
+            createdAt: now,
+            updatedAt: now,
+          };
+          existing.unshift(resultPlan);
+        }
+      } else {
+        const nextId = existing.length > 0 ? Math.max(...existing.map((p) => p.id || 0)) + 1 : 1;
+        resultPlan = {
+          ...input,
+          id: nextId,
+          createdAt: now,
+          updatedAt: now,
+        };
+        existing.unshift(resultPlan);
+      }
+
+      await supabase.storage.from("student-photos").upload("seating-plans.json", JSON.stringify(existing, null, 2), {
+        upsert: true,
+        contentType: "application/json",
+      });
+
+      return resultPlan;
+    } catch (err) {
+      console.warn("Error persisting seating plan to Supabase storage:", err);
+      return null;
+    }
   },
-  async deleteSeatingPlan(id: number): Promise<boolean> { const supabase = getSupabaseServer(); if (!supabase) return false; return !(await supabase.from("seating_plans").delete().eq("id", id)).error; },
+
+  async deleteSeatingPlan(id: number): Promise<boolean> {
+    const supabase = getSupabaseServer();
+    if (!supabase) return false;
+
+    try {
+      const { error } = await supabase.from("seating_plans").delete().eq("id", id);
+      if (!error) return true;
+    } catch {
+      // Fall through to storage
+    }
+
+    try {
+      const { data: fileData, error: fileErr } = await supabase.storage.from("student-photos").download("seating-plans.json");
+      if (!fileErr && fileData) {
+        const text = await fileData.text();
+        const parsed = JSON.parse(text);
+        if (Array.isArray(parsed)) {
+          const filtered = parsed.filter((p: SeatingPlan) => p.id !== id);
+          await supabase.storage.from("student-photos").upload("seating-plans.json", JSON.stringify(filtered, null, 2), {
+            upsert: true,
+            contentType: "application/json",
+          });
+          return true;
+        }
+      }
+    } catch (err) {
+      console.warn("Error deleting seating plan from Supabase storage:", err);
+    }
+
+    return false;
+  },
 
   // =========================================================================
   // DASHBOARD KPI SUMMARY

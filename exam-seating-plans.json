@@ -1,0 +1,236 @@
+[
+  {
+    "id": 1,
+    "roomName": "Hall C-201",
+    "examinationId": 1,
+    "examinationName": "IV Semester End Semester Regular Examinations",
+    "examDate": "2026-11-01",
+    "session": "09:30 AM – 12:30 PM",
+    "totalBenches": 10,
+    "benchesPerRow": 2,
+    "createdAt": "2026-10-30T18:22:38.792Z",
+    "updatedAt": "2026-11-01T18:22:40.852Z",
+    "benches": [
+      {
+        "benchNumber": 1,
+        "benchCode": "B-01",
+        "leftSeat": {
+          "seatId": "B1-L",
+          "benchNumber": 1,
+          "position": "L",
+          "studentId": 1,
+          "studentName": "Mohammed Thahaseen",
+          "usn": "1RV22CS001",
+          "branch": "CSE",
+          "subjectCode": "CS401"
+        },
+        "rightSeat": {
+          "seatId": "B1-R",
+          "benchNumber": 1,
+          "position": "R",
+          "studentId": 3,
+          "studentName": "Priya Nair",
+          "usn": "1RV22AI005",
+          "branch": "AIML",
+          "subjectCode": "AI401"
+        }
+      },
+      {
+        "benchNumber": 2,
+        "benchCode": "B-02",
+        "leftSeat": {
+          "seatId": "B2-L",
+          "benchNumber": 2,
+          "position": "L",
+          "studentId": 5,
+          "studentName": "Karthik Verma",
+          "usn": "1RV22EC018",
+          "branch": "ECE",
+          "subjectCode": "EC401"
+        },
+        "rightSeat": {
+          "seatId": "B2-R",
+          "benchNumber": 2,
+          "position": "R",
+          "studentId": 2,
+          "studentName": "Rohan Mehta",
+          "usn": "1RV22CS014",
+          "branch": "CSE",
+          "subjectCode": "CS401"
+        }
+      },
+      {
+        "benchNumber": 3,
+        "benchCode": "B-03",
+        "leftSeat": {
+          "seatId": "B3-L",
+          "benchNumber": 3,
+          "position": "L",
+          "studentId": 6,
+          "studentName": "Sneha Patil",
+          "usn": "1RV22AI022",
+          "branch": "AIML",
+          "subjectCode": "AI401"
+        },
+        "rightSeat": {
+          "seatId": "B3-R",
+          "benchNumber": 3,
+          "position": "R",
+          "studentId": 7,
+          "studentName": "Rahul Sharma",
+          "usn": "1RV22CS029",
+          "branch": "CSE",
+          "subjectCode": "CS401"
+        }
+      },
+      {
+        "benchNumber": 4,
+        "benchCode": "B-04",
+        "leftSeat": {
+          "seatId": "B4-L",
+          "benchNumber": 4,
+          "position": "L",
+          "studentId": 8,
+          "studentName": "Farhan Ali",
+          "usn": "1RV22AI034",
+          "branch": "AIML",
+          "subjectCode": "AI401"
+        },
+        "rightSeat": {
+          "seatId": "B4-R",
+          "benchNumber": 4,
+          "position": "R",
+          "studentId": 9,
+          "studentName": "Divya Suresh",
+          "usn": "1RV22CS045",
+          "branch": "CSE",
+          "subjectCode": "CS401"
+        }
+      },
+      {
+        "benchNumber": 5,
+        "benchCode": "B-05",
+        "leftSeat": {
+          "seatId": "B5-L",
+          "benchNumber": 5,
+          "position": "L",
+          "studentId": 10,
+          "studentName": "Tanvi Hegde",
+          "usn": "1RV22CS052",
+          "branch": "CSE",
+          "subjectCode": "CS401"
+        },
+        "rightSeat": {
+          "seatId": "B5-R",
+          "benchNumber": 5,
+          "position": "R",
+          "studentId": 11,
+          "studentName": "Adil Patel",
+          "usn": "1RV22AI061",
+          "branch": "AIML",
+          "subjectCode": "AI401"
+        }
+      },
+      {
+        "benchNumber": 6,
+        "benchCode": "B-06",
+        "leftSeat": {
+          "seatId": "B6-L",
+          "benchNumber": 6,
+          "position": "L",
+          "studentId": 12,
+          "studentName": "Pooja Rao",
+          "usn": "1RV22EC033",
+          "branch": "ECE",
+          "subjectCode": "EC401"
+        },
+        "rightSeat": {
+          "seatId": "B6-R",
+          "benchNumber": 6,
+          "position": "R",
+          "studentId": 13,
+          "studentName": "Manoj Kumar",
+          "usn": "1RV22CS070",
+          "branch": "CSE",
+          "subjectCode": "CS401"
+        }
+      },
+      {
+        "benchNumber": 7,
+        "benchCode": "B-07",
+        "leftSeat": {
+          "seatId": "B7-L",
+          "benchNumber": 7,
+          "position": "L",
+          "studentId": 14,
+          "studentName": "Zoya Akhtar",
+          "usn": "1RV22AI077",
+          "branch": "AIML",
+          "subjectCode": "AI401"
+        },
+        "rightSeat": {
+          "seatId": "B7-R",
+          "benchNumber": 7,
+          "position": "R",
+          "studentId": 15,
+          "studentName": "Arjun Reddy",
+          "usn": "1RV22CS088",
+          "branch": "CSE",
+          "subjectCode": "CS401"
+        }
+      },
+      {
+        "benchNumber": 8,
+        "benchCode": "B-08",
+        "leftSeat": {
+          "seatId": "B8-L",
+          "benchNumber": 8,
+          "position": "L",
+          "studentId": 16,
+          "studentName": "Deepak S",
+          "usn": "1RV22EC045",
+          "branch": "ECE",
+          "subjectCode": "EC401"
+        },
+        "rightSeat": {
+          "seatId": "B8-R",
+          "benchNumber": 8,
+          "position": "R",
+          "studentId": 17,
+          "studentName": "Neha Kulkarni",
+          "usn": "1RV22CS095",
+          "branch": "CSE",
+          "subjectCode": "CS401"
+        }
+      },
+      {
+        "benchNumber": 9,
+        "benchCode": "B-09",
+        "leftSeat": {
+          "seatId": "B9-L",
+          "benchNumber": 9,
+          "position": "L"
+        },
+        "rightSeat": {
+          "seatId": "B9-R",
+          "benchNumber": 9,
+          "position": "R"
+        }
+      },
+      {
+        "benchNumber": 10,
+        "benchCode": "B-10",
+        "leftSeat": {
+          "seatId": "B10-L",
+          "benchNumber": 10,
+          "position": "L"
+        },
+        "rightSeat": {
+          "seatId": "B10-R",
+          "benchNumber": 10,
+          "position": "R"
+        }
+      }
+    ]
+  }
+]

@@ -581,7 +581,31 @@ let settings: CollegeSettings = {
   ...loadDiskSettings(),
 };
 
-let seatingPlans: SeatingPlan[] = [
+const SEATING_PLANS_FILE_PATH = path.join(process.cwd(), "exam-seating-plans.json");
+
+function loadDiskSeatingPlans(): SeatingPlan[] {
+  try {
+    if (typeof window === "undefined" && fs.existsSync(SEATING_PLANS_FILE_PATH)) {
+      const raw = fs.readFileSync(SEATING_PLANS_FILE_PATH, "utf-8");
+      return JSON.parse(raw);
+    }
+  } catch (err) {
+    console.warn("Could not read exam-seating-plans.json:", err);
+  }
+  return [];
+}
+
+function saveDiskSeatingPlans(data: SeatingPlan[]) {
+  try {
+    if (typeof window === "undefined") {
+      fs.writeFileSync(SEATING_PLANS_FILE_PATH, JSON.stringify(data, null, 2), "utf-8");
+    }
+  } catch (err) {
+    console.warn("Could not write exam-seating-plans.json:", err);
+  }
+}
+
+let defaultSeatingPlans: SeatingPlan[] = [
   {
     id: 1,
     roomName: "Hall C-201",
@@ -822,6 +846,11 @@ let seatingPlans: SeatingPlan[] = [
     ],
   },
 ];
+
+let seatingPlans: SeatingPlan[] = (() => {
+  const disk = loadDiskSeatingPlans();
+  return disk.length > 0 ? disk : defaultSeatingPlans;
+})();
 
 let defaultBroadcasts: BroadcastNotice[] = [
   {
@@ -1644,30 +1673,66 @@ export const dataStore = {
   // SEATING PLANS
   // =========================================================================
   async getSeatingPlans(filters?: { examinationId?: number; roomName?: string }): Promise<SeatingPlan[]> {
-    if (supabaseStore.isConfigured()) return (await supabaseStore.getSeatingPlans(filters)) || [];
-    let result = [...seatingPlans];
-    if (filters?.examinationId) {
-      result = result.filter((p) => p.examinationId === Number(filters.examinationId));
+    let plans: SeatingPlan[] = [];
+
+    if (supabaseStore.isConfigured()) {
+      try {
+        const supa = await supabaseStore.getSeatingPlans(filters);
+        if (supa && supa.length > 0) {
+          plans = supa;
+        }
+      } catch (err) {
+        console.warn("Supabase getSeatingPlans error:", err);
+      }
     }
-    if (filters?.roomName) {
-      result = result.filter((p) => p.roomName.toLowerCase().includes(filters.roomName!.toLowerCase()));
+
+    if (plans.length === 0) {
+      const disk = loadDiskSeatingPlans();
+      if (disk.length > 0) {
+        seatingPlans = disk;
+      }
+      let result = [...seatingPlans];
+      if (filters?.examinationId) {
+        result = result.filter((p) => p.examinationId === Number(filters.examinationId));
+      }
+      if (filters?.roomName) {
+        result = result.filter((p) => p.roomName.toLowerCase().includes(filters.roomName!.toLowerCase()));
+      }
+      plans = result;
     }
-    return result;
+
+    return plans;
   },
 
   async getSeatingPlanById(id: number): Promise<SeatingPlan | null> {
-    if (supabaseStore.isConfigured()) return await supabaseStore.getSeatingPlanById(id);
+    if (supabaseStore.isConfigured()) {
+      try {
+        const supa = await supabaseStore.getSeatingPlanById(id);
+        if (supa) return supa;
+      } catch (err) {
+        console.warn("Supabase getSeatingPlanById error:", err);
+      }
+    }
+    const disk = loadDiskSeatingPlans();
+    if (disk.length > 0) seatingPlans = disk;
     const plan = seatingPlans.find((p) => p.id === id);
     return plan ? { ...plan } : null;
   },
 
   async saveSeatingPlan(input: Omit<SeatingPlan, "id" | "createdAt" | "updatedAt"> & { id?: number }): Promise<SeatingPlan> {
+    let saved: SeatingPlan | null = null;
     if (supabaseStore.isConfigured()) {
-      const saved = await supabaseStore.saveSeatingPlan(input);
-      if (!saved) throw new Error("Unable to save seating plan in Supabase.");
-      return saved;
+      try {
+        saved = await supabaseStore.saveSeatingPlan(input);
+      } catch (err) {
+        console.warn("Supabase saveSeatingPlan error:", err);
+      }
     }
+
     const now = new Date().toISOString();
+    const disk = loadDiskSeatingPlans();
+    if (disk.length > 0) seatingPlans = disk;
+
     if (input.id) {
       const idx = seatingPlans.findIndex((p) => p.id === input.id);
       if (idx !== -1) {
@@ -1678,27 +1743,39 @@ export const dataStore = {
           updatedAt: now,
         };
         seatingPlans[idx] = updated;
-        return updated;
+        saveDiskSeatingPlans(seatingPlans);
+        return saved || updated;
       }
     }
 
-    const newId = getNextId("seatingPlan");
     const newPlan: SeatingPlan = {
       ...input,
-      id: newId,
+      id: saved?.id || (input.id || (seatingPlans.length > 0 ? Math.max(...seatingPlans.map((p) => p.id)) + 1 : 1)),
       createdAt: now,
       updatedAt: now,
     };
     seatingPlans.unshift(newPlan);
-    return newPlan;
+    saveDiskSeatingPlans(seatingPlans);
+    return saved || newPlan;
   },
 
   async deleteSeatingPlan(id: number): Promise<boolean> {
-    if (supabaseStore.isConfigured()) return await supabaseStore.deleteSeatingPlan(id);
+    if (supabaseStore.isConfigured()) {
+      try {
+        await supabaseStore.deleteSeatingPlan(id);
+      } catch (err) {
+        console.warn("Supabase deleteSeatingPlan error:", err);
+      }
+    }
+    const disk = loadDiskSeatingPlans();
+    if (disk.length > 0) seatingPlans = disk;
     const idx = seatingPlans.findIndex((p) => p.id === id);
-    if (idx === -1) return false;
-    seatingPlans.splice(idx, 1);
-    return true;
+    if (idx !== -1) {
+      seatingPlans.splice(idx, 1);
+      saveDiskSeatingPlans(seatingPlans);
+      return true;
+    }
+    return false;
   },
 
   // =========================================================================

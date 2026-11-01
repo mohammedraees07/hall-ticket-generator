@@ -1,0 +1,635 @@
+
+==================== SLIDE 1 ====================
+--- Shape 1 (Rectangle 15) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 16) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 17) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (TextBox 1) [shape_type=TEXT_BOX (17)] ---
+  P0: full='“Earned or Fabricated? Measuring the Screening Advantage of LLM* Resume Rewriting”' | runs=[{'text': '“Earned or Fabricated? Measuring the Screening Advantage of LLM* Resume Rewriting”', 'font': 'Times New Roman', 'size': '381000', 'bold': True, 'italic': None, 'color': None}]
+--- Shape 5 (Rectangle 2) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='VISVESVARAYA TECHNOLOGICAL UNIVERSITY' | runs=[{'text': 'VISVESVARAYA TECHNOLOGICAL UNIVERSITY', 'font': 'Times New Roman', 'size': '406400', 'bold': True, 'italic': False, 'color': None}]
+  P1: full='“Jnana Sangama”, Belagavi – 590018' | runs=[{'text': '“Jnana Sangama”, Belagavi – 590018', 'font': 'Times New Roman', 'size': '355600', 'bold': True, 'italic': False, 'color': None}]
+  P2: full='' | runs=[]
+--- Shape 6 (Rectangle 3) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full=' ' | runs=[{'text': ' ', 'font': 'Times New Roman', 'size': '152400', 'bold': False, 'italic': False, 'color': None}]
+--- Shape 7 (Rectangle 6) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='Department Coordinators' | runs=[{'text': 'Department Coordinators', 'font': 'Times New Roman', 'size': '304800', 'bold': None, 'italic': None, 'color': None}]
+  P1: full='Dr. Hafeez M K' | runs=[{'text': 'Dr. Hafeez M K', 'font': 'Times New Roman', 'size': '355600', 'bold': True, 'italic': None, 'color': None}]
+  P2: full='Mrs. Sakeena' | runs=[{'text': 'Mrs. Sakeena', 'font': 'Times New Roman', 'size': '355600', 'bold': None, 'italic': None, 'color': None}]
+  P3: full='Department of CSE,' | runs=[{'text': 'Department of CSE,', 'font': 'Times New Roman', 'size': '355600', 'bold': None, 'italic': None, 'color': None}]
+  P4: full='PACE, Mangalore' | runs=[{'text': 'PACE, Mangalore', 'font': 'Times New Roman', 'size': '355600', 'bold': None, 'italic': None, 'color': None}]
+--- Shape 8 (Rectangle 18) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='   Presented by:' | runs=[{'text': '   Presented by:', 'font': 'Times New Roman', 'size': '304800', 'bold': None, 'italic': None, 'color': None}]
+  P1: full='M. Shafikuddin – 4PA23CS065' | runs=[{'text': 'M. Shafikuddin – 4PA23CS065', 'font': 'Times New Roman', 'size': '355600', 'bold': None, 'italic': None, 'color': None}]
+  P2: full='Mohammed Sahil – 4PA23CS080' | runs=[{'text': 'Mohammed Sahil – 4PA23CS080', 'font': 'Times New Roman', 'size': '355600', 'bold': None, 'italic': None, 'color': None}]
+  P3: full='Noorul Ameen – 4PA23CS099' | runs=[{'text': 'Noorul Ameen – 4PA23CS099', 'font': 'Times New Roman', 'size': '355600', 'bold': None, 'italic': None, 'color': None}]
+  P4: full='Shammas Muneer Ali – 4PA23CS111' | runs=[{'text': 'Shammas Muneer Ali – 4PA23CS111', 'font': 'Times New Roman', 'size': '355600', 'bold': None, 'italic': None, 'color': None}]
+--- Shape 11 (Rectangle 3) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='P. A. COLLEGE OF ENGINEERING, MANGALORE ' | runs=[{'text': 'P. A. COLLEGE OF ENGINEERING, MANGALORE', 'font': 'Times New Roman', 'size': '457200', 'bold': True, 'italic': None, 'color': None}, {'text': ' ', 'font': 'Times New Roman', 'size': '406400', 'bold': None, 'italic': None, 'color': None}]
+  P1: full='Department of Computer Science & Engineering' | runs=[{'text': 'Department of Computer Science & Engineering', 'font': 'Times New Roman', 'size': '457200', 'bold': True, 'italic': None, 'color': None}]
+--- Shape 13 (Rectangle 19) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='Under the Guidance of' | runs=[{'text': 'Under the Guidance of', 'font': 'Times New Roman', 'size': '304800', 'bold': None, 'italic': None, 'color': None}]
+  P1: full='Prof. Mohammed Saifudeen' | runs=[{'text': 'Prof. Mohammed Saifudeen', 'font': 'Times New Roman', 'size': '355600', 'bold': True, 'italic': None, 'color': None}]
+  P2: full='Assistant Professor' | runs=[{'text': 'Assistant Professor', 'font': 'Times New Roman', 'size': '355600', 'bold': None, 'italic': None, 'color': None}]
+  P3: full='Department of CSE,' | runs=[{'text': 'Department of CSE,', 'font': 'Times New Roman', 'size': '355600', 'bold': None, 'italic': None, 'color': None}]
+  P4: full='PACE, Mangalore' | runs=[{'text': 'PACE, Mangalore', 'font': 'Times New Roman', 'size': '355600', 'bold': None, 'italic': None, 'color': None}]
+--- Shape 14 (TextBox 1028) [shape_type=TEXT_BOX (17)] ---
+  P0: full='*LLM = Large Language Model, an AI that writes text (for example ChatGPT)' | runs=[{'text': '*LLM = Large Language Model, an AI that writes text (for example ChatGPT)', 'font': 'Calibri', 'size': '254000', 'bold': False, 'italic': False, 'color': 'C9D6E2'}]
+  P1: full='Team ID: 23CSMPB10' | runs=[{'text': 'Team ID: 23CSMPB10', 'font': 'Calibri', 'size': '254000', 'bold': False, 'italic': False, 'color': 'C9D6E2'}]
+
+==================== SLIDE 2 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='CONTENTS' | runs=[{'text': 'CONTENTS', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='02' | runs=[{'text': '02', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (Rounded Rectangle 25) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 6 (Oval 26) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='1' | runs=[{'text': '1', 'font': 'Calibri', 'size': '431800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Introduction' | runs=[{'text': 'Introduction', 'font': 'Times New Roman', 'size': '431800', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 8 (Rounded Rectangle 28) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 9 (Oval 29) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='2' | runs=[{'text': '2', 'font': 'Calibri', 'size': '431800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 10 (TextBox 30) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Review of Literature' | runs=[{'text': 'Review of Literature', 'font': 'Times New Roman', 'size': '431800', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 11 (Rounded Rectangle 31) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 12 (Oval 32) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='3' | runs=[{'text': '3', 'font': 'Calibri', 'size': '431800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 13 (TextBox 33) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Objectives' | runs=[{'text': 'Objectives', 'font': 'Times New Roman', 'size': '431800', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 14 (Rounded Rectangle 34) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 15 (Oval 35) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='4' | runs=[{'text': '4', 'font': 'Calibri', 'size': '431800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 16 (TextBox 36) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Methodology' | runs=[{'text': 'Methodology', 'font': 'Times New Roman', 'size': '431800', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 17 (Rounded Rectangle 37) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 18 (Oval 38) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='5' | runs=[{'text': '5', 'font': 'Calibri', 'size': '431800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 19 (TextBox 39) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Implementation' | runs=[{'text': 'Implementation', 'font': 'Times New Roman', 'size': '431800', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 20 (Rounded Rectangle 40) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 21 (Oval 41) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='6' | runs=[{'text': '6', 'font': 'Calibri', 'size': '431800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 22 (TextBox 42) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Results' | runs=[{'text': 'Results', 'font': 'Times New Roman', 'size': '431800', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 23 (Rounded Rectangle 43) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 24 (Oval 44) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='7' | runs=[{'text': '7', 'font': 'Calibri', 'size': '431800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 25 (TextBox 45) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Conclusion & Future Scope' | runs=[{'text': 'Conclusion & Future Scope', 'font': 'Times New Roman', 'size': '431800', 'bold': True, 'italic': False, 'color': '12273F'}]
+
+==================== SLIDE 3 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='1. INTRODUCTION' | runs=[{'text': '1. INTRODUCTION', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='03' | runs=[{'text': '03', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (TextBox 25) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Job seekers now ask AI (like ChatGPT) to improve their resumes' | runs=[{'text': 'Job seekers ', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': '12273F'}, {'text': 'now ask AI (like ChatGPT) to improve their resumes', 'font': 'Calibri', 'size': '381000', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P1: full='Companies use software (ATS*) that scores every resume before a person reads it' | runs=[{'text': 'Companies ', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': '12273F'}, {'text': 'use software (ATS*) that scores every resume before a person reads it', 'font': 'Calibri', 'size': '381000', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P2: full='AI can add things the candidate never did: skills, numbers, job titles, degrees' | runs=[{'text': 'AI can add things ', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': '12273F'}, {'text': 'the candidate never did: skills, numbers, job titles, degrees', 'font': 'Calibri', 'size': '381000', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P3: full='Our question: when AI raises the score, how much of the rise is honest and how much is made up?' | runs=[{'text': 'Our question: ', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': '12273F'}, {'text': 'when AI raises the score, how much of the rise is honest and how much is made up?', 'font': 'Calibri', 'size': '381000', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 6 (Rounded Rectangle 26) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Your resume' | runs=[{'text': 'Your resume', 'font': 'Times New Roman', 'size': '431800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 9 (Rounded Rectangle 29) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 10 (TextBox 30) [shape_type=TEXT_BOX (17)] ---
+  P0: full='AI rewrite' | runs=[{'text': 'AI rewrite', 'font': 'Times New Roman', 'size': '431800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 12 (Rounded Rectangle 32) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 13 (TextBox 33) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Higher score?' | runs=[{'text': 'Higher score?', 'font': 'Times New Roman', 'size': '431800', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 14 (Footnote) [shape_type=TEXT_BOX (17)] ---
+  P0: full='*ATS = Applicant Tracking System: software that filters and ranks resumes for a job' | runs=[{'text': '*ATS = Applicant Tracking System: software that filters and ranks resumes for a job', 'font': 'Calibri', 'size': '215900', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+
+==================== SLIDE 4 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='2. REVIEW OF LITERATURE' | runs=[{'text': '2. REVIEW OF LITERATURE', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='04' | runs=[{'text': '04', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (Rounded Rectangle 25) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 6 (TextBox 26) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Xu et al. [1]   2025' | runs=[{'text': 'Xu et al. [1]', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': '009191'}, {'text': '   2025', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='AI screeners prefer resumes written by AI, most of all by the same AI' | runs=[{'text': 'AI screeners prefer resumes written by AI, most of all by the same AI', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 8 (Rounded Rectangle 28) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 9 (TextBox 29) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Chen & Xiao [2]   2026' | runs=[{'text': 'Chen & Xiao [2]', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': '009191'}, {'text': '   2026', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+--- Shape 10 (TextBox 30) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Screeners react to how a resume is worded, even when the skills are the same' | runs=[{'text': 'Screeners react to how a resume is worded, even when the skills are the same', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 11 (Rounded Rectangle 31) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 12 (TextBox 32) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Takano [3]   2026' | runs=[{'text': 'Takano [3]', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': '009191'}, {'text': '   2026', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+--- Shape 13 (TextBox 33) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Studies made-up content in AI hiring pipelines and ways to reduce it' | runs=[{'text': 'Studies made-up content in AI hiring pipelines and ways to reduce it', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 14 (Rounded Rectangle 34) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 15 (TextBox 35) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Indukuri & Agrawal [4]   2026' | runs=[{'text': 'Indukuri & Agrawal [4]', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': '009191'}, {'text': '   2026', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+--- Shape 16 (TextBox 36) [shape_type=TEXT_BOX (17)] ---
+  P0: full='A framework to cut made-up content when AI rewrites documents' | runs=[{'text': 'A framework to cut made-up content when AI rewrites documents', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 17 (Rounded Rectangle 37) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 18 (TextBox 38) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Gan et al. [8]   2024' | runs=[{'text': 'Gan et al. [8]', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': '009191'}, {'text': '   2024', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+--- Shape 19 (TextBox 39) [shape_type=TEXT_BOX (17)] ---
+  P0: full='AI agents that screen resumes for recruiters' | runs=[{'text': 'AI agents that screen resumes for recruiters', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 20 (Rounded Rectangle 40) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 21 (TextBox 41) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Zhang et al. [12]   2026' | runs=[{'text': 'Zhang et al. [12]', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': '009191'}, {'text': '   2026', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+--- Shape 22 (TextBox 42) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Hidden instructions can trick AI resume screeners' | runs=[{'text': 'Hidden instructions can trick AI resume screeners', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 23 (Rounded Rectangle 43) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 24 (TextBox 44) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Gap:  to our knowledge, no earlier study measured how much of the AI score boost is earned and how much is made up.' | runs=[{'text': 'Gap:  ', 'font': 'Calibri', 'size': '355600', 'bold': True, 'italic': False, 'color': 'E0A944'}, {'text': 'to our knowledge, no earlier study measured how much of the AI score boost is earned and how much is made up.', 'font': 'Calibri', 'size': '355600', 'bold': False, 'italic': False, 'color': 'FFFFFF'}]
+
+==================== SLIDE 5 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='3. OBJECTIVES' | runs=[{'text': '3. OBJECTIVES', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='05' | runs=[{'text': '05', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (Rounded Rectangle 25) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 6 (Oval 26) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='RQ1' | runs=[{'text': 'RQ1', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='How much of the score boost is made up?' | runs=[{'text': 'How much of the score boost is made up?', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 8 (Rounded Rectangle 28) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 9 (Oval 29) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='RQ2' | runs=[{'text': 'RQ2', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 10 (TextBox 30) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Which kinds of made-up claims earn the most points?' | runs=[{'text': 'Which kinds of made-up claims earn the most points?', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 11 (Rounded Rectangle 31) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 12 (Oval 32) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='RQ3' | runs=[{'text': 'RQ3', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 13 (TextBox 33) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Can we keep the honest part and remove the rest?' | runs=[{'text': 'Can we keep the honest part and remove the rest?', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 14 (Rounded Rectangle 34) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 15 (TextBox 35) [shape_type=TEXT_BOX (17)] ---
+  P0: full='ALSO BUILT' | runs=[{'text': 'ALSO BUILT', 'font': 'Calibri', 'size': '279400', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 16 (TextBox 36) [shape_type=TEXT_BOX (17)] ---
+  P0: full='A fair test: 400 resume–job pairs, six versions of each resume' | runs=[{'text': 'A fair test: 400 resume–job pairs, six versions of each resume', 'font': 'Calibri', 'size': '342900', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P1: full='A web tool that checks any AI-rewritten resume, line by line' | runs=[{'text': 'A web tool that checks any AI-rewritten resume, line by line', 'font': 'Calibri', 'size': '342900', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+
+==================== SLIDE 6 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='4. METHODOLOGY – THE EXPERIMENT' | runs=[{'text': '4. METHODOLOGY – THE EXPERIMENT', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='06' | runs=[{'text': '06', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (Rounded Rectangle 25) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 6 (Oval 26) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='1' | runs=[{'text': '1', 'font': 'Calibri', 'size': '304800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Original' | runs=[{'text': 'Original', 'font': 'Times New Roman', 'size': '368300', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 8 (TextBox 28) [shape_type=TEXT_BOX (17)] ---
+  P0: full='the resume as written' | runs=[{'text': 'the resume as written', 'font': 'Calibri', 'size': '266700', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 9 (Rounded Rectangle 29) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 10 (Oval 30) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='2' | runs=[{'text': '2', 'font': 'Calibri', 'size': '304800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 11 (TextBox 31) [shape_type=TEXT_BOX (17)] ---
+  P0: full='AI rewrite' | runs=[{'text': 'AI rewrite', 'font': 'Times New Roman', 'size': '368300', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 12 (TextBox 32) [shape_type=TEXT_BOX (17)] ---
+  P0: full='ChatGPT-style “tailor this resume”' | runs=[{'text': 'ChatGPT-style “tailor this resume”', 'font': 'Calibri', 'size': '266700', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 13 (Rounded Rectangle 33) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 14 (Oval 34) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='3' | runs=[{'text': '3', 'font': 'Calibri', 'size': '304800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 15 (TextBox 35) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Stripped' | runs=[{'text': 'Stripped', 'font': 'Times New Roman', 'size': '368300', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 16 (TextBox 36) [shape_type=TEXT_BOX (17)] ---
+  P0: full='AI rewrite with every unsupported claim removed' | runs=[{'text': 'AI rewrite with every unsupported claim removed', 'font': 'Calibri', 'size': '266700', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 17 (Rounded Rectangle 37) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 18 (Oval 38) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='4' | runs=[{'text': '4', 'font': 'Calibri', 'size': '304800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 19 (TextBox 39) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Length control' | runs=[{'text': 'Length control', 'font': 'Times New Roman', 'size': '368300', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 20 (TextBox 40) [shape_type=TEXT_BOX (17)] ---
+  P0: full='AI rewrite minus the same number of true lines' | runs=[{'text': 'AI rewrite minus the same number of true lines', 'font': 'Calibri', 'size': '266700', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 21 (Rounded Rectangle 41) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 22 (Oval 42) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='5' | runs=[{'text': '5', 'font': 'Calibri', 'size': '304800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 23 (TextBox 43) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Guarded' | runs=[{'text': 'Guarded', 'font': 'Times New Roman', 'size': '368300', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 24 (TextBox 44) [shape_type=TEXT_BOX (17)] ---
+  P0: full='AI rewrite fixed line by line until nothing is flagged' | runs=[{'text': 'AI rewrite fixed line by line until nothing is flagged', 'font': 'Calibri', 'size': '266700', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 25 (Rounded Rectangle 45) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 26 (Oval 46) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='6' | runs=[{'text': '6', 'font': 'Calibri', 'size': '304800', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 27 (TextBox 47) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Rule-based' | runs=[{'text': 'Rule-based', 'font': 'Times New Roman', 'size': '368300', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 28 (TextBox 48) [shape_type=TEXT_BOX (17)] ---
+  P0: full='style-only rewrite that adds no new claims' | runs=[{'text': 'style-only rewrite that adds no new claims', 'font': 'Calibri', 'size': '266700', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 29 (Rounded Rectangle 49) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 30 (TextBox 50) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Fabricated share  =  (AI score − Stripped score)  ÷  (AI score − Original score)' | runs=[{'text': 'Fabricated share  =  ', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': 'E0A944'}, {'text': '(AI score − Stripped score)  ÷  (AI score − Original score)', 'font': 'Calibri', 'size': '381000', 'bold': False, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 31 (TextBox 51) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Each resume is scored against one job, so differences come from the rewriting alone. A score shows how well a resume matches the job.' | runs=[{'text': 'Each resume is scored against one job, so differences come from the rewriting alone. A score shows how well a resume matches the job.', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+
+==================== SLIDE 7 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='4. METHODOLOGY – CLAIM CHECKER' | runs=[{'text': '4. METHODOLOGY – CLAIM CHECKER', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='07' | runs=[{'text': '07', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (Rounded Rectangle 25) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 6 (Oval 26) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='1' | runs=[{'text': '1', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Skill' | runs=[{'text': 'Skill', 'font': 'Calibri', 'size': '342900', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 8 (TextBox 28) [shape_type=TEXT_BOX (17)] ---
+  P0: full='SQL appears, but the original never lists it' | runs=[{'text': 'SQL appears, but the original never lists it', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 9 (Rounded Rectangle 29) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 10 (Oval 30) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='2' | runs=[{'text': '2', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 11 (TextBox 31) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Number' | runs=[{'text': 'Number', 'font': 'Calibri', 'size': '342900', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 12 (TextBox 32) [shape_type=TEXT_BOX (17)] ---
+  P0: full='“35%” appears, but the original never says it' | runs=[{'text': '“35%” appears, but the original never says it', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 13 (Rounded Rectangle 33) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 14 (Oval 34) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='3' | runs=[{'text': '3', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 15 (TextBox 35) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Bigger role' | runs=[{'text': 'Bigger role', 'font': 'Calibri', 'size': '342900', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 16 (TextBox 36) [shape_type=TEXT_BOX (17)] ---
+  P0: full='“assisted” became “led”' | runs=[{'text': '“assisted” became “led”', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 17 (Rounded Rectangle 37) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 18 (Oval 38) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='4' | runs=[{'text': '4', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 19 (TextBox 39) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Degree / certificate' | runs=[{'text': 'Degree / certificate', 'font': 'Calibri', 'size': '342900', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 20 (TextBox 40) [shape_type=TEXT_BOX (17)] ---
+  P0: full='an MBA or certificate the candidate does not hold' | runs=[{'text': 'an MBA or certificate the candidate does not hold', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 21 (Rounded Rectangle 41) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 22 (Oval 42) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='5' | runs=[{'text': '5', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 23 (TextBox 43) [shape_type=TEXT_BOX (17)] ---
+  P0: full='New content' | runs=[{'text': 'New content', 'font': 'Calibri', 'size': '342900', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 24 (TextBox 44) [shape_type=TEXT_BOX (17)] ---
+  P0: full='a new duty or result that the original does not mention' | runs=[{'text': 'a new duty or result that the original does not mention', 'font': 'Calibri', 'size': '279400', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 25 (Rounded Rectangle 45) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 26 (TextBox 46) [shape_type=TEXT_BOX (17)] ---
+  P0: full='HOW IT WORKS' | runs=[{'text': 'HOW IT WORKS', 'font': 'Calibri', 'size': '279400', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 27 (TextBox 47) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Every claim in the rewrite is compared with the original resume. If the original does not support it, it is flagged.' | runs=[{'text': 'Every claim in the rewrite is compared with the original resume. If the original does not support it, it is flagged.', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 28 (Rounded Rectangle 48) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 29 (TextBox 49) [shape_type=TEXT_BOX (17)] ---
+  P0: full='HOW ACCURATE' | runs=[{'text': 'HOW ACCURATE', 'font': 'Calibri', 'size': '279400', 'bold': True, 'italic': False, 'color': '9A6B12'}]
+--- Shape 30 (TextBox 50) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Checked on 100 hand-labelled claims: 8 in 10 flags were right, and about 7 in 10 invented claims were caught.' | runs=[{'text': 'Checked on 100 hand-labelled claims: 8 in 10 flags were right, and about 7 in 10 invented claims were caught.', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+
+==================== SLIDE 8 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='4. METHODOLOGY – DATA & SCREENERS' | runs=[{'text': '4. METHODOLOGY – DATA & SCREENERS', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='08' | runs=[{'text': '08', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (Rounded Rectangle 25) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 6 (TextBox 26) [shape_type=TEXT_BOX (17)] ---
+  P0: full='200' | runs=[{'text': '200', 'font': 'Times New Roman', 'size': '685800', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='real resumes (Kaggle Resume Dataset)' | runs=[{'text': 'real resumes (Kaggle Resume Dataset)', 'font': 'Calibri', 'size': '292100', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 8 (Rounded Rectangle 28) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 9 (TextBox 29) [shape_type=TEXT_BOX (17)] ---
+  P0: full='48' | runs=[{'text': '48', 'font': 'Times New Roman', 'size': '685800', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 10 (TextBox 30) [shape_type=TEXT_BOX (17)] ---
+  P0: full='real job listings, saved on one date' | runs=[{'text': 'real job listings, saved on one date', 'font': 'Calibri', 'size': '292100', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 11 (Rounded Rectangle 31) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 12 (TextBox 32) [shape_type=TEXT_BOX (17)] ---
+  P0: full='400' | runs=[{'text': '400', 'font': 'Times New Roman', 'size': '685800', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 13 (TextBox 33) [shape_type=TEXT_BOX (17)] ---
+  P0: full='resume–job pairs: same field and career changers' | runs=[{'text': 'resume–job pairs: same field and career changers', 'font': 'Calibri', 'size': '292100', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 14 (TextBox 34) [shape_type=TEXT_BOX (17)] ---
+  P0: full='THREE SCREENERS GIVE EACH VERSION A SCORE' | runs=[{'text': 'THREE SCREENERS GIVE EACH VERSION A SCORE', 'font': 'Calibri', 'size': '279400', 'bold': True, 'italic': False, 'color': '5B6B7B'}]
+--- Shape 15 (Rounded Rectangle 35) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 16 (TextBox 36) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Keyword ATS' | runs=[{'text': 'Keyword ATS', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 17 (TextBox 37) [shape_type=TEXT_BOX (17)] ---
+  P0: full='counts matching keywords, like a real filter' | runs=[{'text': 'counts matching keywords, like a real filter', 'font': 'Calibri', 'size': '292100', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 18 (Rounded Rectangle 38) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 19 (TextBox 39) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Gemma 3 4B*' | runs=[{'text': 'Gemma 3 4B*', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 20 (TextBox 40) [shape_type=TEXT_BOX (17)] ---
+  P0: full='an AI from a different family than the rewriter' | runs=[{'text': 'an AI from a different family than the rewriter', 'font': 'Calibri', 'size': '292100', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 21 (Rounded Rectangle 41) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 22 (TextBox 42) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Qwen 3.5 4B*' | runs=[{'text': 'Qwen 3.5 4B*', 'font': 'Calibri', 'size': '381000', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 23 (TextBox 43) [shape_type=TEXT_BOX (17)] ---
+  P0: full='the same AI that wrote the rewrite, to test self-preference' | runs=[{'text': 'the same AI that wrote the rewrite, to test self-preference', 'font': 'Calibri', 'size': '292100', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 24 (Footnote) [shape_type=TEXT_BOX (17)] ---
+  P0: full='*4B = 4 billion parameters: small AI models that run on an ordinary PC through Ollama' | runs=[{'text': '*4B = 4 billion parameters: small AI models that run on an ordinary PC through Ollama', 'font': 'Calibri', 'size': '215900', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+
+==================== SLIDE 9 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='5. IMPLEMENTATION' | runs=[{'text': '5. IMPLEMENTATION', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='09' | runs=[{'text': '09', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (Rounded Rectangle 25) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 6 (Oval 26) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='1' | runs=[{'text': '1', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Resume + job' | runs=[{'text': 'Resume + job', 'font': 'Calibri', 'size': '355600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 8 (TextBox 28) [shape_type=TEXT_BOX (17)] ---
+  P0: full='pasted in, or from the dataset' | runs=[{'text': 'pasted in, or from the dataset', 'font': 'Calibri', 'size': '266700', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 10 (Rounded Rectangle 30) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 11 (Oval 31) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='2' | runs=[{'text': '2', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 12 (TextBox 32) [shape_type=TEXT_BOX (17)] ---
+  P0: full='AI rewrite' | runs=[{'text': 'AI rewrite', 'font': 'Calibri', 'size': '355600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 13 (TextBox 33) [shape_type=TEXT_BOX (17)] ---
+  P0: full='local model through Ollama' | runs=[{'text': 'local model through Ollama', 'font': 'Calibri', 'size': '266700', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 15 (Rounded Rectangle 35) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 16 (Oval 36) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='3' | runs=[{'text': '3', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 17 (TextBox 37) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Claim check' | runs=[{'text': 'Claim check', 'font': 'Calibri', 'size': '355600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 18 (TextBox 38) [shape_type=TEXT_BOX (17)] ---
+  P0: full='flags and strips unsupported lines' | runs=[{'text': 'flags and strips unsupported lines', 'font': 'Calibri', 'size': '266700', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 20 (Rounded Rectangle 40) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 21 (Oval 41) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='4' | runs=[{'text': '4', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 22 (TextBox 42) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Score + report' | runs=[{'text': 'Score + report', 'font': 'Calibri', 'size': '355600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 23 (TextBox 43) [shape_type=TEXT_BOX (17)] ---
+  P0: full='earned part vs made-up part' | runs=[{'text': 'earned part vs made-up part', 'font': 'Calibri', 'size': '266700', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 25 (TextBox 45) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Audit page: how much of the gain is made up' | runs=[{'text': 'Audit page: how much of the gain is made up', 'font': 'Calibri', 'size': '254000', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 27 (TextBox 47) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Flagged lines, with the closest original line' | runs=[{'text': 'Flagged lines, with the closest original line', 'font': 'Calibri', 'size': '254000', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 28 (Footnote) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Built with Python, FastAPI, Next.js (React) and Ollama. The web page runs the same code that produced the results.' | runs=[{'text': 'Built with Python, FastAPI, Next.js (React) and Ollama. The web page runs the same code that produced the results.', 'font': 'Calibri', 'size': '215900', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+
+==================== SLIDE 10 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='6. RESULTS – HOW MUCH IS MADE UP?' | runs=[{'text': '6. RESULTS – HOW MUCH IS MADE UP?', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='10' | runs=[{'text': '10', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 6 (Rounded Rectangle 26) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='146%' | runs=[{'text': '146%', 'font': 'Times New Roman', 'size': '533400', 'bold': True, 'italic': False, 'color': 'B4483C'}]
+--- Shape 8 (TextBox 28) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Keyword ATS' | runs=[{'text': 'Keyword ATS', 'font': 'Calibri', 'size': '279400', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 9 (TextBox 29) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Without the made-up parts, the rewrite scores below the original' | runs=[{'text': 'Without the made-up parts, the rewrite scores below the original', 'font': 'Calibri', 'size': '241300', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 10 (Rounded Rectangle 30) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 11 (TextBox 31) [shape_type=TEXT_BOX (17)] ---
+  P0: full='33%' | runs=[{'text': '33%', 'font': 'Times New Roman', 'size': '533400', 'bold': True, 'italic': False, 'color': 'B4483C'}]
+--- Shape 12 (TextBox 32) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Other AI screener' | runs=[{'text': 'Other AI screener', 'font': 'Calibri', 'size': '279400', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 13 (TextBox 33) [shape_type=TEXT_BOX (17)] ---
+  P0: full='A third of the boost is made up' | runs=[{'text': 'A third of the boost is made up', 'font': 'Calibri', 'size': '241300', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 14 (Rounded Rectangle 34) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 15 (TextBox 35) [shape_type=TEXT_BOX (17)] ---
+  P0: full='45%' | runs=[{'text': '45%', 'font': 'Times New Roman', 'size': '533400', 'bold': True, 'italic': False, 'color': 'B4483C'}]
+--- Shape 16 (TextBox 36) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Same AI screener' | runs=[{'text': 'Same AI screener', 'font': 'Calibri', 'size': '279400', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 17 (TextBox 37) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Nearly half is made up' | runs=[{'text': 'Nearly half is made up', 'font': 'Calibri', 'size': '241300', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 18 (Footnote) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Made-up share above 100% means the honest part of the rewrite scored lower than the original. Based on 380 pairs (20 refused by the AI were excluded).' | runs=[{'text': 'Made-up share above 100% means the honest part of the rewrite scored lower than the original. Based on 380 pairs (20 refused by the AI were excluded).', 'font': 'Calibri', 'size': '215900', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+
+==================== SLIDE 11 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='6. RESULTS – WHAT PAYS AND FAIR TESTS' | runs=[{'text': '6. RESULTS – WHAT PAYS AND FAIR TESTS', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='11' | runs=[{'text': '11', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (Rounded Rectangle 25) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 6 (TextBox 26) [shape_type=TEXT_BOX (17)] ---
+  P0: full='2.3 pts' | runs=[{'text': '2.3 pts', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='PER INVENTED SKILL' | runs=[{'text': 'PER INVENTED SKILL', 'font': 'Calibri', 'size': '266700', 'bold': True, 'italic': False, 'color': '5B6B7B'}]
+--- Shape 8 (TextBox 28) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Under the keyword ATS, invented skills pay the most of any claim type' | runs=[{'text': 'Under the keyword ATS, invented skills pay the most of any claim type', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 9 (Rounded Rectangle 29) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 10 (TextBox 30) [shape_type=TEXT_BOX (17)] ---
+  P0: full='< 3 pts' | runs=[{'text': '< 3 pts', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 11 (TextBox 31) [shape_type=TEXT_BOX (17)] ---
+  P0: full='LENGTH TEST' | runs=[{'text': 'LENGTH TEST', 'font': 'Calibri', 'size': '266700', 'bold': True, 'italic': False, 'color': '5B6B7B'}]
+--- Shape 12 (TextBox 32) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Removing the same number of true lines barely changed scores (13.7 pts when the unsupported ones were removed)' | runs=[{'text': 'Removing the same number of true lines barely changed scores (13.7 pts when the unsupported ones were removed)', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 13 (Rounded Rectangle 33) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 14 (TextBox 34) [shape_type=TEXT_BOX (17)] ---
+  P0: full='+6.5 pts' | runs=[{'text': '+6.5 pts', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 15 (TextBox 35) [shape_type=TEXT_BOX (17)] ---
+  P0: full='SELF-PREFERENCE' | runs=[{'text': 'SELF-PREFERENCE', 'font': 'Calibri', 'size': '266700', 'bold': True, 'italic': False, 'color': '5B6B7B'}]
+--- Shape 16 (TextBox 36) [shape_type=TEXT_BOX (17)] ---
+  P0: full='The same-AI screener gave extra points only to made-up content; the honest part scored the same' | runs=[{'text': 'The same-AI screener gave extra points only to made-up content; the honest part scored the same', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 17 (Rounded Rectangle 37) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 18 (TextBox 38) [shape_type=TEXT_BOX (17)] ---
+  P0: full='On average 22.4 unsupported claims appeared per rewritten resume, and 98% of rewrites had at least one.' | runs=[{'text': 'On average ', 'font': 'Calibri', 'size': '330200', 'bold': False, 'italic': False, 'color': '1E2F42'}, {'text': '22.4 unsupported claims', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': '1E2F42'}, {'text': ' appeared per rewritten resume, and 98% of rewrites had at least one.', 'font': 'Calibri', 'size': '330200', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+
+==================== SLIDE 12 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='6. RESULTS – CAN WE KEEP THE HONEST PART?' | runs=[{'text': '6. RESULTS – CAN WE KEEP THE HONEST PART?', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='12' | runs=[{'text': '12', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (Rounded Rectangle 25) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 6 (TextBox 26) [shape_type=TEXT_BOX (17)] ---
+  P0: full='AI REWRITE' | runs=[{'text': 'AI REWRITE', 'font': 'Calibri', 'size': '279400', 'bold': True, 'italic': False, 'color': 'B4483C'}]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='22.4' | runs=[{'text': '22.4', 'font': 'Times New Roman', 'size': '1143000', 'bold': True, 'italic': False, 'color': 'B4483C'}]
+--- Shape 8 (TextBox 28) [shape_type=TEXT_BOX (17)] ---
+  P0: full='unsupported claims per resume' | runs=[{'text': 'unsupported claims per resume', 'font': 'Calibri', 'size': '330200', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 9 (Rounded Rectangle 29) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 10 (TextBox 30) [shape_type=TEXT_BOX (17)] ---
+  P0: full='GUARDED REWRITE' | runs=[{'text': 'GUARDED REWRITE', 'font': 'Calibri', 'size': '279400', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 11 (TextBox 31) [shape_type=TEXT_BOX (17)] ---
+  P0: full='0.7' | runs=[{'text': '0.7', 'font': 'Times New Roman', 'size': '1143000', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 12 (TextBox 32) [shape_type=TEXT_BOX (17)] ---
+  P0: full='unsupported claims per resume (97% removed)' | runs=[{'text': 'unsupported claims per resume (97% removed)', 'font': 'Calibri', 'size': '330200', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 14 (Rounded Rectangle 34) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 15 (TextBox 35) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Cost: the guarded rewrite keeps only 56% of the honest gain (goal was 70%)' | runs=[{'text': 'Cost: ', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': '12273F'}, {'text': 'the guarded rewrite keeps only 56% of the honest gain (goal was 70%)', 'font': 'Calibri', 'size': '330200', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P1: full='Why: the fixing step is cautious and removes some true lines too' | runs=[{'text': 'Why: ', 'font': 'Calibri', 'size': '330200', 'bold': True, 'italic': False, 'color': '12273F'}, {'text': 'the fixing step is cautious and removes some true lines too', 'font': 'Calibri', 'size': '330200', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+
+==================== SLIDE 13 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='7. CONCLUSION & FUTURE SCOPE' | runs=[{'text': '7. CONCLUSION & FUTURE SCOPE', 'font': 'Times New Roman', 'size': '584200', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='13' | runs=[{'text': '13', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (Rounded Rectangle 25) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 6 (Oval 26) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='1' | runs=[{'text': '1', 'font': 'Calibri', 'size': '355600', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 7 (TextBox 27) [shape_type=TEXT_BOX (17)] ---
+  P0: full='A big part of the AI score boost is bought with unsupported claims' | runs=[{'text': 'A big part of the AI score boost is bought with unsupported claims', 'font': 'Calibri', 'size': '292100', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 8 (Rounded Rectangle 28) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 9 (Oval 29) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='2' | runs=[{'text': '2', 'font': 'Calibri', 'size': '355600', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 10 (TextBox 30) [shape_type=TEXT_BOX (17)] ---
+  P0: full='How big depends on the screener: 33% to 146%' | runs=[{'text': 'How big depends on the screener: 33% to 146%', 'font': 'Calibri', 'size': '292100', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 11 (Rounded Rectangle 31) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 12 (Oval 32) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='3' | runs=[{'text': '3', 'font': 'Calibri', 'size': '355600', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 13 (TextBox 33) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Same-AI screeners reward the made-up parts, not the honest ones' | runs=[{'text': 'Same-AI screeners reward the made-up parts, not the honest ones', 'font': 'Calibri', 'size': '292100', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 14 (Rounded Rectangle 34) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 15 (Oval 35) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='4' | runs=[{'text': '4', 'font': 'Calibri', 'size': '355600', 'bold': True, 'italic': False, 'color': 'FFFFFF'}]
+--- Shape 16 (TextBox 36) [shape_type=TEXT_BOX (17)] ---
+  P0: full='A guarded rewrite cuts made-up claims by 97%, but keeps only 56% of the honest gain' | runs=[{'text': 'A guarded rewrite cuts made-up claims by 97%, but keeps only 56% of the honest gain', 'font': 'Calibri', 'size': '292100', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 17 (Rounded Rectangle 37) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 18 (TextBox 38) [shape_type=TEXT_BOX (17)] ---
+  P0: full='NEXT STEPS' | runs=[{'text': 'NEXT STEPS', 'font': 'Calibri', 'size': '279400', 'bold': True, 'italic': False, 'color': '009191'}]
+--- Shape 19 (TextBox 39) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Test commercial AI such as GPT, Gemini and Claude' | runs=[{'text': 'Test commercial AI such as GPT, Gemini and Claude', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P1: full='Use all 2,384 eligible resumes' | runs=[{'text': 'Use all 2,384 eligible resumes', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P2: full='Keep more of the honest gain' | runs=[{'text': 'Keep more of the honest gain', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P3: full='Use real recruiter decisions' | runs=[{'text': 'Use real recruiter decisions', 'font': 'Calibri', 'size': '304800', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+--- Shape 20 (Footnote) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Limits: small 4B models, one rewrite per pair, and a rule-based checker that can miss reworded verbs.' | runs=[{'text': 'Limits: small 4B models, one rewrite per pair, and a rule-based checker that can miss reworded verbs.', 'font': 'Calibri', 'size': '215900', 'bold': False, 'italic': False, 'color': '5B6B7B'}]
+
+==================== SLIDE 14 ====================
+--- Shape 0 (TextBox 3) [shape_type=TEXT_BOX (17)] ---
+  P0: full='REFERENCES' | runs=[{'text': 'REFERENCES', 'font': 'Times New Roman', 'size': '609600', 'bold': True, 'italic': False, 'color': '12273F'}]
+--- Shape 1 (Rectangle 21) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 22) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (Rectangle 23) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 4 (PageNo) [shape_type=TEXT_BOX (17)] ---
+  P0: full='14' | runs=[{'text': '14', 'font': 'Aptos', 'size': '190500', 'bold': True, 'italic': None, 'color': '009191'}]
+--- Shape 5 (TextBox 25) [shape_type=TEXT_BOX (17)] ---
+  P0: full='[1] J. Xu, G. Li and J. Y. Jiang, "AI Self-preferencing in Algorithmic Hiring: Empirical Evidence and Insights," arXiv:2509.00462, 2025.' | runs=[{'text': '[1] J. Xu, G. Li and J. Y. Jiang, "AI Self-preferencing in Algorithmic Hiring: Empirical Evidence and Insights," arXiv:2509.00462, 2025.', 'font': 'Calibri', 'size': '317500', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P1: full='[2] Q. Chen and Y. Xiao, "Competence-Preserving Resume Perturbations Expose Presentation Sensitivity in LLM Screening," arXiv:2609.16517, 2026.' | runs=[{'text': '[2] Q. Chen and Y. Xiao, "Competence-Preserving Resume Perturbations Expose Presentation Sensitivity in LLM Screening," arXiv:2609.16517, 2026.', 'font': 'Calibri', 'size': '317500', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P2: full='[3] H. Takano, "Mitigating Fabrication in Multi-Stage LLM Pipelines for Hiring," arXiv:2608.26171, 2026.' | runs=[{'text': '[3] H. Takano, "Mitigating Fabrication in Multi-Stage LLM Pipelines for Hiring," arXiv:2608.26171, 2026.', 'font': 'Calibri', 'size': '317500', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P3: full='[4] S. Indukuri and A. Agrawal, "Grounded Optimization: A Layered Engineering Framework for Reducing LLM Hallucination in Automated Personal Document Rewriting," arXiv:2607.01457, 2026.' | runs=[{'text': '[4] S. Indukuri and A. Agrawal, "Grounded Optimization: A Layered Engineering Framework for Reducing LLM Hallucination in Automated Personal Document Rewriting," arXiv:2607.01457, 2026.', 'font': 'Calibri', 'size': '317500', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P4: full='[8] C. Gan, Q. Zhang and T. Mori, "Application of LLM Agents in Recruitment: A Novel Framework for Resume Screening," J. Information Processing, 2024.' | runs=[{'text': '[8] C. Gan, Q. Zhang and T. Mori, "Application of LLM Agents in Recruitment: A Novel Framework for Resume Screening," J. Information Processing, 2024.', 'font': 'Calibri', 'size': '317500', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+  P5: full='[12] M. Zhang et al., "Measuring Real-World Prompt Injection Attacks in LLM-based Resume Screening," arXiv:2605.28999, 2026.' | runs=[{'text': '[12] M. Zhang et al., "Measuring Real-World Prompt Injection Attacks in LLM-based Resume Screening," arXiv:2605.28999, 2026.', 'font': 'Calibri', 'size': '317500', 'bold': False, 'italic': False, 'color': '1E2F42'}]
+
+==================== SLIDE 15 ====================
+--- Shape 0 (Content Placeholder 2) [shape_type=PLACEHOLDER (14)] ---
+  P0: full='THANK YOU' | runs=[{'text': 'THANK YOU', 'font': 'Times New Roman', 'size': '1524000', 'bold': True, 'italic': None, 'color': 'FFFFFF'}]
+--- Shape 1 (Rectangle 3) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 2 (Rectangle 4) [shape_type=AUTO_SHAPE (1)] ---
+  P0: full='' | runs=[]
+--- Shape 3 (TextBox 5) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Questions & Discussion' | runs=[{'text': 'Questions & Discussion', 'font': 'Times New Roman', 'size': '584200', 'bold': True, 'italic': False, 'color': 'E0A944'}]
+--- Shape 4 (TextBox 6) [shape_type=TEXT_BOX (17)] ---
+  P0: full='Earned or Fabricated?   |   Team ID: 23CSMPB10   |   Guide: Prof. Mohammed Saifudeen' | runs=[{'text': 'Earned or Fabricated?   |   Team ID: 23CSMPB10   |   Guide: Prof. Mohammed Saifudeen', 'font': 'Calibri', 'size': '330200', 'bold': False, 'italic': False, 'color': 'C9D6E2'}]

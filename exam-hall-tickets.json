@@ -1,0 +1,109 @@
+[
+  {
+    "id": 1,
+    "number": "HT-26-0001",
+    "studentId": 1,
+    "studentName": "Mohammed Thahaseen",
+    "usn": "1RV22CS001",
+    "course": "B.Tech Computer Science & Engineering",
+    "department": "Computer Science & Engineering",
+    "semester": 4,
+    "section": "A",
+    "photoUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
+    "examinationId": 1,
+    "examinationName": "IV Semester End Semester Regular Examinations",
+    "academicYear": "2026-27",
+    "center": "Block C · Examination Complex",
+    "verifyCode": "PACE-26-1RV22CS001",
+    "generatedAt": "2026-10-31T17:31:50.975Z",
+    "status": "Valid",
+    "subjects": [
+      {
+        "subjectCode": "CS401",
+        "subjectName": "Design & Analysis of Algorithms",
+        "examDate": "2026-11-01",
+        "startTime": "09:30",
+        "endTime": "12:30",
+        "room": "Hall C-201"
+      },
+      {
+        "subjectCode": "CS402",
+        "subjectName": "Operating Systems & Concurrency",
+        "examDate": "2026-11-04",
+        "startTime": "09:30",
+        "endTime": "12:30",
+        "room": "Hall C-201"
+      },
+      {
+        "subjectCode": "CS403",
+        "subjectName": "Database Management Systems",
+        "examDate": "2026-11-08",
+        "startTime": "09:30",
+        "endTime": "12:30",
+        "room": "Hall C-201"
+      },
+      {
+        "subjectCode": "CS404",
+        "subjectName": "Theory of Computation",
+        "examDate": "2026-11-11",
+        "startTime": "09:30",
+        "endTime": "12:30",
+        "room": "Hall C-201"
+      }
+    ],
+    "qrDataUrl": "data:image/png;base64,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"
+  },
+  {
+    "id": 2,
+    "number": "HT-26-0002",
+    "studentId": 2,
+    "studentName": "Rohan Mehta",
+    "usn": "1RV22CS014",
+    "course": "B.Tech Computer Science & Engineering",
+    "department": "Computer Science & Engineering",
+    "semester": 4,
+    "section": "A",
+    "photoUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
+    "examinationId": 1,
+    "examinationName": "IV Semester End Semester Regular Examinations",
+    "academicYear": "2026-27",
+    "center": "Block C · Examination Complex",
+    "verifyCode": "PACE-26-1RV22CS014",
+    "generatedAt": "2026-10-31T17:31:50.975Z",
+    "status": "Valid",
+    "subjects": [
+      {
+        "subjectCode": "CS401",
+        "subjectName": "Design & Analysis of Algorithms",
+        "examDate": "2026-11-01",
+        "startTime": "09:30",
+        "endTime": "12:30",
+        "room": "Hall C-201"
+      },
+      {
+        "subjectCode": "CS402",
+        "subjectName": "Operating Systems & Concurrency",
+        "examDate": "2026-11-04",
+        "startTime": "09:30",
+        "endTime": "12:30",
+        "room": "Hall C-201"
+      },
+      {
+        "subjectCode": "CS403",
+        "subjectName": "Database Management Systems",
+        "examDate": "2026-11-08",
+        "startTime": "09:30",
+        "endTime": "12:30",
+        "room": "Hall C-201"
+      },
+      {
+        "subjectCode": "CS404",
+        "subjectName": "Theory of Computation",
+        "examDate": "2026-11-11",
+        "startTime": "09:30",
+        "endTime": "12:30",
+        "room": "Hall C-201"
+      }
+    ]
+  }
+]

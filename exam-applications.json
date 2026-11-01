@@ -1,0 +1,106 @@
+[
+  {
+    "id": 1,
+    "applicationNumber": "APP-26-001",
+    "examinationId": 1,
+    "examinationName": "IV Semester End Semester Regular Examinations",
+    "studentId": 1,
+    "studentName": "Mohammed Thahaseen",
+    "usn": "1RV22CS001",
+    "course": "B.Tech Computer Science & Engineering",
+    "department": "Computer Science & Engineering",
+    "branch": "CSE",
+    "semester": 4,
+    "section": "A",
+    "academicYear": "2026-27",
+    "photoUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
+    "feeReceiptUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&auto=format&fit=crop&q=80",
+    "subjectsConfirmed": true,
+    "arrears": [],
+    "accountsStatus": {
+      "collegeFees": "No Due",
+      "hostelFees": "No Due",
+      "busFees": "No Due",
+      "fine": "Paid",
+      "updatedAt": "2026-11-01T17:31:50.996Z"
+    },
+    "principalStatus": {
+      "status": "Approved",
+      "reviewedAt": "2026-11-01T14:21:46.981Z"
+    },
+    "stage": "HALL_TICKET_ISSUED",
+    "hallTicketId": 1,
+    "hallTicketNumber": "HT-26-0001",
+    "appliedAt": "2026-10-30T16:21:46.981Z",
+    "updatedAt": "2026-11-01T17:31:50.996Z"
+  },
+  {
+    "id": 2,
+    "applicationNumber": "APP-26-002",
+    "examinationId": 1,
+    "examinationName": "IV Semester End Semester Regular Examinations",
+    "studentId": 2,
+    "studentName": "Rohan Mehta",
+    "usn": "1RV22CS014",
+    "course": "B.Tech Computer Science & Engineering",
+    "department": "Computer Science & Engineering",
+    "branch": "CSE",
+    "semester": 4,
+    "section": "A",
+    "academicYear": "2026-27",
+    "photoUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
+    "feeReceiptUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&auto=format&fit=crop&q=80",
+    "subjectsConfirmed": true,
+    "arrears": [
+      {
+        "subjectCode": "CS301",
+        "subjectName": "Data Structures & Applications"
+      }
+    ],
+    "accountsStatus": {
+      "collegeFees": "Pending",
+      "hostelFees": "No Due",
+      "busFees": "N/A",
+      "fine": "Pending",
+      "updatedAt": "2026-10-31T16:21:46.981Z"
+    },
+    "principalStatus": {
+      "status": "Pending"
+    },
+    "stage": "UNDER_ACCOUNTS_REVIEW",
+    "appliedAt": "2026-10-31T16:21:46.981Z",
+    "updatedAt": "2026-10-31T16:21:46.981Z"
+  },
+  {
+    "id": 3,
+    "applicationNumber": "APP-26-003",
+    "examinationId": 1,
+    "examinationName": "IV Semester End Semester Regular Examinations",
+    "studentId": 4,
+    "studentName": "Arjun Kulkarni",
+    "usn": "1RV22IS006",
+    "course": "B.Tech Information Science",
+    "department": "Information Science & Engineering",
+    "branch": "ISE",
+    "semester": 4,
+    "section": "A",
+    "academicYear": "2026-27",
+    "photoUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80",
+    "feeReceiptUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&auto=format&fit=crop&q=80",
+    "subjectsConfirmed": false,
+    "subjectIssueNote": "Elective IS401 is shown instead of Advanced Web Tech",
+    "arrears": [],
+    "accountsStatus": {
+      "collegeFees": "Pending",
+      "hostelFees": "Pending",
+      "busFees": "Pending",
+      "fine": "N/A"
+    },
+    "principalStatus": {
+      "status": "Pending"
+    },
+    "stage": "APPLIED",
+    "appliedAt": "2026-10-30T16:21:46.981Z",
+    "updatedAt": "2026-10-30T16:21:46.981Z"
+  }
+]

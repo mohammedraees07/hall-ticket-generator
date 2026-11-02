@@ -11,15 +11,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "default", ...props }, ref) => {
     const variants = {
       primary:
-        "bg-white text-black hover:bg-neutral-200 active:bg-neutral-300 font-semibold shadow-sm",
+        "bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 active:scale-[0.99] font-semibold shadow-sm border border-[var(--primary)]",
       secondary:
-        "bg-[#1c1f26] text-white hover:bg-[#252831] border border-[#2e323b] active:bg-[#181a20]",
+        "bg-[var(--muted)] text-[var(--foreground)] hover:bg-[var(--accent)] border border-[var(--border)] active:scale-[0.99]",
       outline:
-        "bg-transparent text-[#e2e4e9] hover:bg-[#181a20] hover:text-white border border-[#2a2d36]",
+        "bg-transparent text-[var(--foreground)] hover:bg-[var(--accent)] border border-[var(--border)]",
       ghost:
-        "bg-transparent text-[#9ca3af] hover:text-white hover:bg-[#181a20]",
+        "bg-transparent text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)]",
       danger:
-        "bg-[#261414] text-[#ef4444] hover:bg-[#381a1a] border border-[#ef4444]/30 font-medium",
+        "bg-red-500/10 text-red-600 dark:text-red-400 hover:bg-red-500/20 border border-red-500/30 font-medium",
     };
 
     const sizes = {
@@ -33,7 +33,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-[5px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-40 select-none cursor-pointer",
+          "inline-flex items-center justify-center gap-2 rounded-[5px] font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--ring)] disabled:pointer-events-none disabled:opacity-40 select-none cursor-pointer",
           variants[variant],
           sizes[size],
           className

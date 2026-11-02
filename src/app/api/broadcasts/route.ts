@@ -71,3 +71,21 @@ export async function PATCH(req: NextRequest) {
     return handleApiError(err);
   }
 }
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const auth = await getAuthContext(req);
+    const access = assertRole(auth, ["ADMIN", "STAFF"]);
+    if (!access.allowed) throw new ApiError(access.reason || "Forbidden", 403);
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+    if (!id) {
+      return NextResponse.json({ error: "Broadcast ID is required" }, { status: 400 });
+    }
+
+    await dataStore.deleteBroadcast(Number(id));
+    return NextResponse.json({ success: true, id: Number(id) });
+  } catch (err) {
+    return handleApiError(err);
+  }
+}

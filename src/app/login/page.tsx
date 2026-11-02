@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth/auth-context";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { ShieldCheck, Lock, Mail, ArrowRight, Info } from "lucide-react";
-
+import { ThemeToggle } from "@/components/theme-toggle";
+import { ShieldCheck, Lock, ArrowRight } from "lucide-react";
 
 export default function LoginPage() {
   const { login, loading } = useAuth();
@@ -35,36 +35,36 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0c0d10] flex flex-col justify-center items-center px-4 py-12 relative">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col justify-center items-center px-4 py-12 relative transition-colors">
+      {/* Top right Theme Toggle with circular ripple effect */}
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
+
       <div className="w-full max-w-md space-y-6">
         {/* Brand Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex h-10 w-10 rounded-[5px] bg-[#16181f] border border-[#272b36] text-white items-center justify-center mb-1 shadow-md">
-            <ShieldCheck size={20} />
-          </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white">Autonomous Examination Portal</h1>
-          <p className="text-xs text-[#8d929d]">
+          
+          <h1 className="text-2xl font-bold tracking-tight text-[var(--foreground)]">Autonomous Examination Portal</h1>
+          <p className="text-xs text-[var(--muted-foreground)]">
             Sign in to access candidate registers, verification tokens, or your official admit card.
           </p>
         </div>
 
         {/* Credentials Form */}
-        <Card className="rounded-[5px] border border-[#23262d] bg-[#131519] p-6 shadow-xl">
-          <CardHeader className="p-0 pb-4 mb-4 border-b border-[#1f2229]">
+        <Card className="p-6 shadow-xl">
+          <CardHeader className="p-0 pb-4 mb-4 border-b border-[var(--border)]">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-base">Institutional Sign In</CardTitle>
-              <Badge variant="neutral" className="text-[9px] font-mono uppercase tracking-widest">
-                SUPABASE AUTH
-              </Badge>
+              <CardTitle className="text-base text-[var(--foreground)]">Institutional Sign In</CardTitle>
             </div>
-            <CardDescription className="text-xs">
+            <CardDescription className="text-xs text-[var(--muted-foreground)]">
               Enter your authorized college email address and security password.
             </CardDescription>
           </CardHeader>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
-              <div className="p-3 rounded-[4px] bg-[#1f1414] border border-[#422222] text-[#f87171] text-xs leading-relaxed">
+              <div className="p-3 rounded-[4px] bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs leading-relaxed">
                 {error}
               </div>
             )}
@@ -94,16 +94,15 @@ export default function LoginPage() {
               {submitting ? "Authenticating..." : "Sign In to Portal"}
             </Button>
           </form>
-
         </Card>
 
         {/* Public Student Verification Link */}
-        <div className="p-3.5 rounded-[5px] border border-[#23262d] bg-[#111317] text-center">
-          <p className="text-xs text-[#8d929d]">
+        <div className="p-3.5 rounded-[5px] border border-[var(--border)] bg-[var(--card)] text-center transition-colors shadow-sm">
+          <p className="text-xs text-[var(--muted-foreground)]">
             Want to verify student?{" "}
             <Link
               href="/verify"
-              className="font-bold text-white underline underline-offset-4 hover:text-emerald-400 transition-colors inline-flex items-center gap-1"
+              className="font-bold text-[var(--foreground)] underline underline-offset-4 hover:opacity-80 transition-opacity inline-flex items-center gap-1"
             >
               Public Verify <ArrowRight size={13} />
             </Link>
@@ -111,11 +110,10 @@ export default function LoginPage() {
         </div>
 
         {/* Footer */}
-        <div className="text-center text-[11px] text-[#606675]">
+        <div className="text-center text-[11px] text-[var(--muted-foreground)] font-mono">
           Autonomous College Examination Division &middot; Official Verifiable System
         </div>
       </div>
     </div>
   );
 }
-

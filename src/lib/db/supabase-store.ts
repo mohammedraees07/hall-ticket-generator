@@ -64,6 +64,13 @@ export const supabaseStore = {
     return { id: Number(data.id), examinationId: data.examination_id, examinationName: data.examinations?.name || "Examination", semester: data.semester, title: data.title, description: data.description || "", deadline: data.closes_at, isOpen: data.is_open, announcedAt: data.created_at };
   },
 
+  async deleteBroadcast(id: number): Promise<boolean> {
+    const supabase = getSupabaseServer();
+    if (!supabase) return false;
+    const { error } = await supabase.from("exam_application_windows").delete().eq("id", id);
+    return !error;
+  },
+
   mapApplication(row: any): ExamApplication {
     const decisions = (row.exam_application_decisions || []) as any[];
     const latest = (kind: string) => decisions.filter((decision) => decision.decision_type === kind).sort((a, b) => String(b.decided_at).localeCompare(String(a.decided_at)))[0];

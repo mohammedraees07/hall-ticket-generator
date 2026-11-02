@@ -1,64 +1,93 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: 220 14% 6%;
-    --foreground: 0 0% 100%;
-    
-    --card: 220 13% 9%;
-    --card-foreground: 0 0% 100%;
-    
-    --popover: 220 13% 9%;
-    --popover-foreground: 0 0% 100%;
-    
-    --primary: 0 0% 100%;
-    --primary-foreground: 220 14% 6%;
-    
-    --secondary: 220 11% 14%;
-    --secondary-foreground: 0 0% 98%;
-    
-    --muted: 220 10% 13%;
-    --muted-foreground: 220 9% 60%;
-    
-    --accent: 0 0% 100%;
-    --accent-foreground: 220 14% 6%;
-    
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
-    
-    --border: 220 10% 17%;
-    --input: 220 10% 17%;
-    --ring: 0 0% 100%;
-    
-    --radius: 5px;
-  }
+:root {
+  color-scheme: light;
+  --background: #FFFFFF;
+  --foreground: #0A0A0A;
+  --muted: #F5F5F5;
+  --muted-foreground: #737373;
+  --border: #E5E5E5;
+  --card: #FFFFFF;
+  --card-foreground: #0A0A0A;
+  --accent: #F5F5F5;
+  --accent-foreground: #0A0A0A;
+  --input: #E5E5E5;
+  --ring: #0A0A0A;
+  --primary: #0A0A0A;
+  --primary-foreground: #FFFFFF;
+  --radius: 5px;
 }
 
+.dark {
+  color-scheme: dark;
+  --background: #0A0A0A;
+  --foreground: #FAFAFA;
+  --muted: #171717;
+  --muted-foreground: #A3A3A3;
+  --border: #262626;
+  --card: #171717;
+  --card-foreground: #FAFAFA;
+  --accent: #262626;
+  --accent-foreground: #FAFAFA;
+  --input: #262626;
+  --ring: #FAFAFA;
+  --primary: #FAFAFA;
+  --primary-foreground: #0A0A0A;
+}
+
+html,
 body {
-  background-color: #0c0d10;
-  color: #f3f4f6;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar for dark theme */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f1013;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #23262d;
+  background: var(--border);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #353942;
+  background: var(--muted-foreground);
 }
 
-/* Circular Theme Transition Animation */
+/* Theme Toggle Button: Sun-to-Moon Morph SVG Animation */
+.theme-sun-moon .theme-moon-cut-circle {
+  transform: translate(10px, -8px);
+  transition: transform 0.5s cubic-bezier(0.2, 0.85, 0.2, 1);
+}
+.theme-sun-moon .theme-core-circle {
+  transition: r 0.5s cubic-bezier(0.2, 0.85, 0.2, 1);
+}
+.theme-sun-moon .theme-rays-group {
+  transform-origin: 12px 12px;
+  transition: transform 0.5s cubic-bezier(0.2, 0.85, 0.2, 1), opacity 0.3s ease;
+  opacity: 1;
+}
+.dark .theme-sun-moon .theme-moon-cut-circle {
+  transform: translate(0, 0);
+}
+.dark .theme-sun-moon .theme-core-circle {
+  r: 8.5px;
+}
+.dark .theme-sun-moon .theme-rays-group {
+  transform: rotate(-90deg) scale(0.4);
+  opacity: 0;
+}
+
+/* Circular View Transitions (View Transitions API) */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -73,6 +102,279 @@ body {
   z-index: 9999;
 }
 
+/* ==========================================================================
+   FUNDAMENTAL CONTRAST RULE:
+   - FOR WHITE (OR LIGHT) BACKGROUND: FONT MUST BE BLACK (#0A0A0A)!
+   - FOR BLACK (OR DARK) BACKGROUND: FONT MUST BE WHITE (#FFFFFF)!
+   ========================================================================== */
+
+/* 1. In Light Mode: Any text-white or light text on light surfaces MUST be dark charcoal */
+html:not(.dark) .text-white,
+html:not(.dark) [class*="text-neutral-100"],
+html:not(.dark) [class*="text-neutral-200"],
+html:not(.dark) [class*="text-neutral-300"],
+html:not(.dark) [class*="text-[#cbd0dc]"],
+html:not(.dark) [class*="text-[#e2e4e9]"],
+html:not(.dark) [class*="text-[#e5e7eb]"],
+html:not(.dark) [class*="text-[#f3f4f6]"] {
+  color: #0A0A0A;
+}
+
+/* 2. In Light Mode: Elements that intentionally have a SOLID BLACK or DARK background
+      MUST have crisp white font and icons */
+html:not(.dark) button[class*="bg-[var(--primary)]"],
+html:not(.dark) button[class*="bg-[var(--primary)]"] *,
+html:not(.dark) button[class*="bg-[var(--foreground)]"],
+html:not(.dark) button[class*="bg-[var(--foreground)]"] *,
+html:not(.dark) button.bg-black,
+html:not(.dark) button.bg-black *,
+html:not(.dark) button[class*="bg-black"]:not([class*="bg-black/"]):not([class*="hover:"]),
+html:not(.dark) button[class*="bg-black"]:not([class*="bg-black/"]):not([class*="hover:"]) *,
+html:not(.dark) a[class*="bg-[var(--primary)]"],
+html:not(.dark) a[class*="bg-[var(--primary)]"] *,
+html:not(.dark) a[class*="bg-[var(--foreground)]"],
+html:not(.dark) a[class*="bg-[var(--foreground)]"] *,
+html:not(.dark) label[class*="bg-[var(--foreground)]"],
+html:not(.dark) label[class*="bg-[var(--foreground)]"] *,
+html:not(.dark) label[class*="bg-black"],
+html:not(.dark) label[class*="bg-black"] *,
+html:not(.dark) aside a[class*="bg-[var(--foreground)]"],
+html:not(.dark) aside a[class*="bg-[var(--foreground)]"] *,
+html:not(.dark) aside a[class*="bg-black"],
+html:not(.dark) aside a[class*="bg-black"] *,
+html:not(.dark) .badge-black,
+html:not(.dark) .badge-black * {
+  background-color: #0A0A0A !important;
+  color: #FFFFFF !important;
+}
+
+/* SVG icons inside black buttons/labels */
+html:not(.dark) button[class*="bg-[var(--primary)]"] svg,
+html:not(.dark) button[class*="bg-[var(--foreground)]"] svg,
+html:not(.dark) button.bg-black svg,
+html:not(.dark) label[class*="bg-[var(--foreground)]"] svg,
+html:not(.dark) aside a[class*="bg-[var(--foreground)]"] svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Saturated colored buttons in light mode (e.g. Emerald submit / Red cancel) */
+html:not(.dark) button[class*="bg-emerald-600"],
+html:not(.dark) button[class*="bg-emerald-600"] *,
+html:not(.dark) button[class*="bg-red-600"],
+html:not(.dark) button[class*="bg-red-600"] * {
+  color: #FFFFFF !important;
+}
+html:not(.dark) button[class*="bg-emerald-600"] svg,
+html:not(.dark) button[class*="bg-red-600"] svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* 3. MODAL DIALOG CONTRAST RULES IN LIGHT MODE:
+      The modal dialog is a pure white card (#FFFFFF).
+      All headings, candidate info, subjects, question labels, and buttons
+      MUST follow the contrast rule! */
+html:not(.dark) .modal-dialog {
+  background-color: #FFFFFF !important;
+  color: #0A0A0A !important;
+  border-color: #E5E5E5 !important;
+}
+
+/* All text elements inside modal default to dark charcoal #0A0A0A */
+html:not(.dark) .modal-dialog h1,
+html:not(.dark) .modal-dialog h2,
+html:not(.dark) .modal-dialog h3,
+html:not(.dark) .modal-dialog h4,
+html:not(.dark) .modal-dialog p:not([class*="text-[var(--muted-foreground)]"]),
+html:not(.dark) .modal-dialog strong,
+html:not(.dark) .modal-dialog span:not([class*="text-emerald"]):not([class*="text-red"]):not([class*="text-[var(--muted-foreground)]"]):not([class*="text-[#717684]"]):not([class*="text-[#8d929d]"]):not([class*="bg-"]),
+html:not(.dark) .modal-dialog label:not([class*="bg-[var(--foreground)]"]):not([class*="bg-black"]):not([class*="bg-emerald"]):not([class*="bg-red"]) {
+  color: #0A0A0A !important;
+}
+
+/* Muted / secondary description labels in modal */
+html:not(.dark) .modal-dialog [class*="text-[var(--muted-foreground)]"],
+html:not(.dark) .modal-dialog [class*="text-[#8d929d]"],
+html:not(.dark) .modal-dialog [class*="text-[#717684]"] {
+  color: #737373 !important;
+}
+
+/* Modal Close Button */
+html:not(.dark) .modal-dialog button[aria-label="Close modal"] {
+  color: #737373 !important;
+}
+html:not(.dark) .modal-dialog button[aria-label="Close modal"]:hover {
+  color: #0A0A0A !important;
+  background-color: #F5F5F5 !important;
+}
+
+/* Subjects list box inside modal (CS401, CS402, etc.) */
+html:not(.dark) .modal-dialog .max-h-36 {
+  background-color: #F5F5F5 !important;
+  border-color: #E5E5E5 !important;
+}
+html:not(.dark) .modal-dialog .max-h-36 * {
+  color: #0A0A0A !important;
+}
+
+/* Light / Secondary / Outline buttons inside modal */
+html:not(.dark) .modal-dialog button[class*="border"]:not([class*="bg-[var(--primary)]"]):not([class*="bg-[var(--foreground)]"]):not([class*="bg-black"]):not([class*="bg-emerald"]):not([class*="bg-red"]),
+html:not(.dark) .modal-dialog button[class*="bg-[var(--muted)]"],
+html:not(.dark) .modal-dialog label[class*="bg-[var(--muted)]"] {
+  background-color: #F5F5F5 !important;
+  color: #0A0A0A !important;
+  border-color: #D1D5DB !important;
+}
+html:not(.dark) .modal-dialog button[class*="border"]:hover,
+html:not(.dark) .modal-dialog button[class*="bg-[var(--muted)]"]:hover,
+html:not(.dark) .modal-dialog label[class*="bg-[var(--muted)]"]:hover {
+  background-color: #E5E5E5 !important;
+  color: #0A0A0A !important;
+}
+
+/* Modal Inputs & Textareas */
+html:not(.dark) .modal-dialog input,
+html:not(.dark) .modal-dialog textarea {
+  background-color: #FFFFFF !important;
+  color: #0A0A0A !important;
+  border-color: #D1D5DB !important;
+}
+
+/* 4. Light-mode surfaces for legacy dark hex containers */
+html:not(.dark) [class*="bg-[#0c0d10]"],
+html:not(.dark) [class*="bg-[#0d0e12]"],
+html:not(.dark) [class*="bg-[#090a0d]"] {
+  background-color: var(--background) !important;
+  color: #0A0A0A;
+}
+
+html:not(.dark) [class*="bg-[#131519]"],
+html:not(.dark) [class*="bg-[#14161b]"],
+html:not(.dark) [class*="bg-[#14161c]"],
+html:not(.dark) [class*="bg-[#121418]"],
+html:not(.dark) [class*="bg-[#121419]"],
+html:not(.dark) [class*="bg-[#111318]"],
+html:not(.dark) [class*="bg-[#111317]"],
+html:not(.dark) [class*="bg-[#16181e]"],
+html:not(.dark) [class*="bg-[#171920]"],
+html:not(.dark) [class*="bg-[#181a20]"],
+html:not(.dark) [class*="bg-[#1c1f26]"] {
+  background-color: var(--card) !important;
+  color: #0A0A0A;
+}
+
+/* Badges and chips that were hardcoded dark grey */
+html:not(.dark) [class*="bg-[#1a1c22]"],
+html:not(.dark) [class*="bg-[#1a1c23]"],
+html:not(.dark) [class*="bg-[#1b1f28]"],
+html:not(.dark) [class*="bg-[#1b1e26]"],
+html:not(.dark) [class*="bg-[#1e222d]"],
+html:not(.dark) [class*="bg-[#1a1d26]"],
+html:not(.dark) [class*="bg-[#0f1013]"],
+html:not(.dark) [class*="bg-[#16181f]"]:not(:hover) {
+  background-color: var(--muted) !important;
+  color: #0A0A0A !important;
+}
+
+/* Row hovers in light mode: subtle light grey hover, never dark charcoal! */
+html:not(.dark) tr[class*="hover:bg-"]:hover,
+html:not(.dark) div[class*="hover:bg-"]:hover {
+  background-color: var(--accent) !important;
+  color: var(--foreground) !important;
+}
+html:not(.dark) tr[class*="hover:bg-"]:hover *,
+html:not(.dark) div[class*="hover:bg-"]:hover * {
+  color: var(--foreground) !important;
+}
+
+/* Subtle accents in light mode */
+html:not(.dark) [class*="bg-[#1f222b]"],
+html:not(.dark) [class*="bg-[#1f2229]"],
+html:not(.dark) [class*="bg-[#20242e]"],
+html:not(.dark) [class*="bg-[#252832]"],
+html:not(.dark) [class*="bg-[#252831]"],
+html:not(.dark) [class*="bg-[#1a1d24]"] {
+  background-color: var(--accent) !important;
+  color: #0A0A0A;
+}
+
+/* Borders in light mode */
+html:not(.dark) [class*="border-[#1e2128]"],
+html:not(.dark) [class*="border-[#1f2229]"],
+html:not(.dark) [class*="border-[#20232a]"],
+html:not(.dark) [class*="border-[#21242c]"],
+html:not(.dark) [class*="border-[#22252c]"],
+html:not(.dark) [class*="border-[#23262d]"],
+html:not(.dark) [class*="border-[#232732]"],
+html:not(.dark) [class*="border-[#242730]"],
+html:not(.dark) [class*="border-[#252830]"],
+html:not(.dark) [class*="border-[#262a34]"],
+html:not(.dark) [class*="border-[#272a33]"],
+html:not(.dark) [class*="border-[#272a34]"],
+html:not(.dark) [class*="border-[#272b36]"],
+html:not(.dark) [class*="border-[#282d3b]"],
+html:not(.dark) [class*="border-[#2b2f3a]"],
+html:not(.dark) [class*="border-[#2b303d]"],
+html:not(.dark) [class*="border-[#2b303f]"],
+html:not(.dark) [class*="border-[#2d3240]"],
+html:not(.dark) [class*="border-[#2e323b]"],
+html:not(.dark) [class*="border-[#2e374a]"],
+html:not(.dark) [class*="border-[#343846]"],
+html:not(.dark) [class*="border-[#343a4a]"],
+html:not(.dark) [class*="border-[#353944]"] {
+  border-color: var(--border) !important;
+}
+
+/* Secondary/muted text in light mode */
+html:not(.dark) [class*="text-[#9ca3af]"],
+html:not(.dark) [class*="text-[#8d929d]"],
+html:not(.dark) [class*="text-[#8e939e]"],
+html:not(.dark) [class*="text-[#7d8391]"],
+html:not(.dark) [class*="text-[#717682]"],
+html:not(.dark) [class*="text-[#717684]"],
+html:not(.dark) [class*="text-[#5b606c]"],
+html:not(.dark) [class*="text-[#636875]"] {
+  color: var(--muted-foreground) !important;
+}
+
+/* Tables in light mode: clear header, readable rows */
+html:not(.dark) thead tr {
+  background-color: var(--muted) !important;
+  color: var(--muted-foreground) !important;
+}
+html:not(.dark) thead tr th {
+  color: var(--muted-foreground) !important;
+}
+html:not(.dark) tbody tr {
+  color: var(--foreground) !important;
+}
+html:not(.dark) tbody tr td:not([class*="bg-black"]):not([class*="bg-[var(--foreground)]"]) {
+  color: var(--foreground) !important;
+}
+
+/* Ensure inputs and selects in light mode are legible */
+html:not(.dark) input,
+html:not(.dark) select,
+html:not(.dark) textarea {
+  color: var(--foreground) !important;
+  background-color: #FFFFFF !important;
+  border-color: var(--border) !important;
+}
+
+/* Hall ticket print canvas MUST always stay crisp white with black ink */
+.print-page {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.print-page * {
+  color: inherit !important;
+  background-color: transparent !important;
+}
+.print-page .bg-white {
+  background-color: #ffffff !important;
+}
+
 /* Print Specific Rules for Official University Hall Tickets */
 @media print {
   body {
@@ -80,7 +382,7 @@ body {
     color: #000000 !important;
   }
   
-  .no-print, nav, header, aside, button, .modal-backdrop {
+  .no-print, nav, header, aside, button, .modal-backdrop, .theme-toggle-btn {
     display: none !important;
   }
   

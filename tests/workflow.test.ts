@@ -118,4 +118,43 @@ test("Workflow Security & Business Rules", async (t) => {
     assert.ok(result.hallTicket.verifyCode, "Hall ticket has unique cryptographic verify code");
     assert.ok(result.hallTicket.qrDataUrl.startsWith("data:image/png;base64,"), "Hall ticket contains authentic QR code");
   });
+
+  await t.test("6. Clean Slate Student account: Ayaan Ahmed (1RV22CS099) exists with no prior application or ticket", async () => {
+    const student = await dataStore.getStudentByUsn("1RV22CS099");
+    assert.ok(student, "Clean student 1RV22CS099 must exist in register");
+    assert.equal(student.name, "Ayaan Ahmed", "Student name matches");
+    assert.equal(student.semester, 4, "Student is enrolled in Semester 4");
+    assert.ok(student.attendancePercentage >= 75, "Student attendance is exam-eligible");
+
+    // Verify student has NO prior application or hall tickets
+    const apps = await dataStore.getApplications({ studentId: student.id });
+    const tickets = await dataStore.getHallTicketsByStudentId(student.id);
+    assert.equal(apps.length, 0, "Clean student must start with 0 applications for end-to-end testing");
+    assert.equal(tickets.length, 0, "Clean student must start with 0 hall tickets");
+  });
+
+  await t.test("7. Broadcast lifecycle: Create and filter broadcast notices by semester", async () => {
+    const examinations = await dataStore.getExaminations();
+    assert.ok(examinations.length > 0, "At least one examination exists");
+
+    const broadcast = await dataStore.createBroadcast({
+      examinationId: examinations[0].id,
+      semester: 4,
+      title: "End-to-End Verification Broadcast",
+      description: "Test window for Semester 4 candidates",
+      deadline: "2026-11-30",
+      actorId: "test-admin",
+    });
+
+    assert.ok(broadcast.id, "Broadcast created with ID");
+    assert.equal(broadcast.semester, 4, "Broadcast semester matches target");
+    assert.equal(broadcast.isOpen, true, "Broadcast is active and open");
+
+    // Student in Semester 4 queries broadcasts
+    const sem4Broadcasts = await dataStore.getBroadcasts(4);
+    assert.ok(
+      sem4Broadcasts.some((b) => b.semester === 4 && b.isOpen),
+      "Semester 4 student finds open broadcast window"
+    );
+  });
 });

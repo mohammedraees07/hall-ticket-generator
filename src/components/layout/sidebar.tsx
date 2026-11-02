@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/lib/auth/auth-context";
@@ -35,6 +35,28 @@ export function Sidebar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const { user, role, isStudent, logout } = useAuth();
+  const [badgeCounts, setBadgeCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    async function fetchCounts() {
+      try {
+        const res = await fetch("/api/notifications");
+        if (res.ok) {
+          const data = await res.json();
+          const counts: Record<string, number> = {};
+          for (const n of data.notifications || []) {
+            if (n.unread) {
+              counts[n.link] = (counts[n.link] || 0) + 1;
+            }
+          }
+          setBadgeCounts(counts);
+        }
+      } catch {}
+    }
+    fetchCounts();
+    const interval = setInterval(fetchCounts, 15000);
+    return () => clearInterval(interval);
+  }, [pathname, role]);
 
   // Distinct, role-separated navigation definitions
   let navItems: NavItem[] = [];
@@ -90,7 +112,7 @@ export function Sidebar() {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label="Open navigation menu"
-            className="p-2 rounded-[5px] bg-[#171920] border border-[#2b2f3a] text-white shadow-md hover:bg-[#20242e] transition-colors"
+            className="p-2 rounded-[5px] bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] shadow-md hover:bg-[var(--accent)] transition-colors"
           >
             <Menu size={18} />
           </button>
@@ -108,28 +130,28 @@ export function Sidebar() {
       {/* Main Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 w-64 border-r border-[#1e2128] bg-[#0d0e12] flex flex-col justify-between transition-transform duration-200 ease-in-out md:translate-x-0 no-print",
+          "fixed inset-y-0 left-0 z-50 w-64 border-r border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] flex flex-col justify-between transition-transform duration-200 ease-in-out md:translate-x-0 no-print select-none",
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
         <div>
-          {/* Header (No logo box; Title on left, mobile close button 'X' on right) */}
-          <div className="flex h-16 items-center justify-between px-5 border-b border-[#1e2128]">
+          {/* Header */}
+          <div className="flex h-16 items-center justify-between px-5 border-b border-[var(--border)]">
             <div className="min-w-0 pr-2">
-              <div className="font-bold text-sm tracking-tight text-white truncate">
+              <div className="font-bold text-sm tracking-tight text-[var(--foreground)] truncate">
                 Hall Ticket System
               </div>
-              <div className="text-[10px] font-mono uppercase tracking-widest text-[#787e8b]">
+              <div className="text-[10px] font-mono uppercase tracking-widest text-[var(--muted-foreground)]">
                 {isStudent ? "Candidate Portal" : "Autonomous Exam Cell"}
               </div>
             </div>
 
-            {/* Mobile Close Button 'X' on the right side */}
+            {/* Mobile Close Button 'X' */}
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
               aria-label="Close menu"
-              className="md:hidden p-1.5 rounded-[5px] text-[#8e94a3] hover:text-white hover:bg-[#1a1d24] transition-colors"
+              className="md:hidden p-1.5 rounded-[5px] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors"
             >
               <X size={18} />
             </button>
@@ -139,7 +161,7 @@ export function Sidebar() {
           <div className="py-5 px-3 space-y-6 overflow-y-auto max-h-[calc(100vh-210px)]">
             {groups.map((group) => (
               <div key={group} className="space-y-1">
-                <div className="px-3 text-[10px] font-mono font-semibold uppercase tracking-wider text-[#636875] mb-2">
+                <div className="px-3 text-[10px] font-mono font-semibold uppercase tracking-wider text-[var(--muted-foreground)] mb-2">
                   {group}
                 </div>
                 {navItems
@@ -153,14 +175,26 @@ export function Sidebar() {
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
                         className={cn(
-                          "flex items-center gap-3 px-3 py-2 text-xs font-medium rounded-[5px] transition-colors",
+                          "flex items-center justify-between px-3 py-2 text-xs font-medium rounded-[5px] transition-colors cursor-pointer",
                           isActive
-                            ? "bg-[#181a20] text-white border-l-2 border-white pl-2.5 font-semibold"
-                            : "text-[#8d929d] hover:bg-[#14151a] hover:text-white"
+                            ? "bg-[var(--foreground)] text-[var(--background)] font-semibold"
+                            : "text-[var(--muted-foreground)] hover:bg-[var(--accent)] hover:text-[var(--foreground)]"
                         )}
                       >
-                        <Icon size={16} strokeWidth={isActive ? 2.2 : 1.8} />
-                        <span>{item.label}</span>
+                        <div className="flex items-center gap-3">
+                          <Icon size={16} strokeWidth={isActive ? 2.2 : 1.8} />
+                          <span>{item.label}</span>
+                        </div>
+                        {badgeCounts[item.href] ? (
+                          <span className={cn(
+                            "px-1.5 py-0.5 rounded-full text-[9px] font-mono font-bold",
+                            isActive
+                              ? "bg-[var(--background)] text-[var(--foreground)]"
+                              : "bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/40"
+                          )}>
+                            {badgeCounts[item.href]}
+                          </span>
+                        ) : null}
                       </Link>
                     );
                   })}
@@ -170,32 +204,28 @@ export function Sidebar() {
         </div>
 
         {/* User Session & Logout Footer */}
-        <div className="p-3 border-t border-[#1e2128] bg-[#090a0d] space-y-2">
+        <div className="p-3 border-t border-[var(--border)] bg-[var(--background)] space-y-2">
           {user ? (
-            <div className="flex items-center justify-between p-2.5 rounded-[5px] border border-[#232732] bg-[#111318]">
+            <div className="flex items-center justify-between p-2.5 rounded-[5px] border border-[var(--border)] bg-[var(--card)]">
               <div className="min-w-0 flex-1 pr-2">
-                {/* Full User Name on top line (brackets stripped) */}
-                <div className="text-xs font-semibold text-white truncate" title={user.name}>
+                <div className="text-xs font-semibold text-[var(--foreground)] truncate" title={user.name}>
                   {user.name.replace(/\s*\(.*?\)\s*/g, "").trim()}
                 </div>
 
-                {/* Role indicator placed below the name (borderless) */}
                 <div className="flex items-center gap-1.5 mt-1">
-                  <span className="inline-flex items-center px-1.5 py-0.5 text-[9px] font-mono font-semibold uppercase tracking-wider rounded-[3px] bg-[#1a1c23] text-[#cbd0dc]">
+                  <span className="inline-flex items-center px-1.5 py-0.5 text-[9px] font-mono font-semibold uppercase tracking-wider rounded-[3px] bg-[var(--muted)] text-[var(--foreground)] border border-[var(--border)]">
                     {role === "ADMIN" ? "Administrator" : role === "STAFF" ? "Exam Staff" : role === "ACCOUNTS" ? "Accounts Officer" : role === "PRINCIPAL" ? "Principal" : "Student"}
                   </span>
                 </div>
 
-                {/* User email */}
-                <p className="text-[10px] text-[#717684] truncate mt-1">{user.email}</p>
+                <p className="text-[10px] text-[var(--muted-foreground)] truncate mt-1">{user.email}</p>
               </div>
 
-              {/* Logout button */}
               <button
                 type="button"
                 onClick={logout}
                 title="Sign Out"
-                className="p-1.5 rounded-[4px] text-[#8e94a3] hover:text-white hover:bg-[#1f232d] transition-colors shrink-0"
+                className="p-1.5 rounded-[4px] text-[var(--muted-foreground)] hover:text-red-600 dark:hover:text-red-400 hover:bg-[var(--accent)] transition-colors shrink-0 cursor-pointer"
               >
                 <LogOut size={15} />
               </button>
@@ -203,15 +233,11 @@ export function Sidebar() {
           ) : (
             <Link
               href="/login"
-              className="flex items-center justify-center gap-2 w-full py-1.5 px-3 rounded-[5px] bg-[#1a1d24] text-xs font-medium text-white hover:bg-[#252832]"
+              className="flex items-center justify-center gap-2 w-full py-1.5 px-3 rounded-[5px] bg-[var(--foreground)] text-[var(--background)] text-xs font-medium hover:opacity-90"
             >
               Sign In
             </Link>
           )}
-
-          <div className="text-center pt-0.5">
-            <p className="text-[10px] font-mono text-[#5b606c]">Examination Division · 2024–25</p>
-          </div>
         </div>
       </aside>
     </>

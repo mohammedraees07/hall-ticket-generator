@@ -283,6 +283,29 @@ export default function ExaminationsPage() {
     }
   };
 
+  const handleDeleteBroadcast = async (id: number) => {
+    if (!confirm("Are you sure you want to remove this broadcast announcement?")) return;
+    try {
+      const res = await fetch(`/api/broadcasts?id=${id}`, { method: "DELETE" });
+      if (res.ok) {
+        loadData();
+      }
+    } catch (err) {
+      console.error("Delete broadcast error:", err);
+    }
+  };
+
+  const openBroadcastForExam = (exam: Examination) => {
+    setBroadcastForm({
+      examinationId: exam.id,
+      semester: exam.semester,
+      title: `${exam.name} - Application Open`,
+      description: `Hall Ticket application window for ${exam.name} is now open. Verify registered subjects, report arrears, and upload fee receipt.`,
+      deadline: exam.startDate ? exam.startDate : new Date(Date.now() + 7 * 86400000).toISOString().split("T")[0],
+    });
+    setBroadcastModalOpen(true);
+  };
+
   return (
     <AppLayout>
       <RoleGuard allowedRoles={["ADMIN", "STAFF"]}>
@@ -316,10 +339,10 @@ export default function ExaminationsPage() {
 
         {/* Active Broadcasts Section */}
         {broadcasts.length > 0 && (
-          <div className="space-y-2">
+          <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#7e8594] flex items-center gap-1.5">
-                <Bell size={13} className="text-amber-400" /> Active Student Application Broadcasts
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#7e8594] flex items-center gap-1.5 font-bold">
+                <Bell size={13} className="text-amber-400" /> Active Student Application Broadcasts ({broadcasts.length})
               </span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -328,35 +351,52 @@ export default function ExaminationsPage() {
                   key={b.id}
                   className={`p-4 rounded-[5px] border ${
                     b.isOpen
-                      ? "border-emerald-500/70 bg-emerald-950/20 text-emerald-100"
+                      ? "border-emerald-500/70 bg-[#121816] text-emerald-100"
                       : "border-[#232732] bg-[#121418] text-neutral-400"
-                  } flex items-center justify-between gap-3 shadow-md`}
+                  } flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-md transition-all`}
                 >
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[9px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] bg-black/40 text-emerald-400">
+                  <div className="space-y-1.5 min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-black/50 text-emerald-400 border border-emerald-500/30">
                         Semester {b.semester}
                       </span>
-                      <span className="text-xs font-bold text-white">{b.title}</span>
+                      <span className="text-[10px] font-mono text-[#8d929d] truncate max-w-[200px]" title={b.examinationName}>
+                        {b.examinationName}
+                      </span>
+                      <Badge variant={b.isOpen ? "success" : "neutral"} className="text-[9px]">
+                        {b.isOpen ? "ACTIVE / OPEN" : "CLOSED"}
+                      </Badge>
                     </div>
-                    <p className="text-[11px] text-[#cbd0dc]/80 max-w-sm truncate">
+                    <h4 className="text-sm font-bold text-white tracking-tight">{b.title}</h4>
+                    <p className="text-[11px] text-[#cbd0dc]/90 line-clamp-2 leading-relaxed">
                       {b.description}
                     </p>
-                    <div className="text-[10px] font-mono text-[#8d929d]">
-                      Deadline to Apply: <strong className="text-white">{b.deadline}</strong>
+                    <div className="text-[11px] font-mono text-[#9ca3af] flex items-center gap-1.5 pt-0.5">
+                      <Clock size={12} className="text-amber-400" />
+                      <span>Deadline to Apply: <strong className="text-white font-mono">{formatDate(b.deadline)}</strong></span>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 shrink-0">
-                    <Badge variant={b.isOpen ? "success" : "neutral"} className="text-[9px]">
-                      {b.isOpen ? "OPEN / ACTIVE" : "CLOSED"}
-                    </Badge>
+                  <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#1f2229]">
                     <button
                       type="button"
                       onClick={() => handleToggleBroadcast(b.id, b.isOpen)}
-                      className="px-2 py-1 rounded-[3px] bg-[#1b1e26] hover:bg-[#252a36] text-[10px] font-mono text-white border border-[#2d3240] transition-colors"
+                      className={`px-3 py-1.5 rounded-[4px] text-xs font-mono font-bold transition-colors border ${
+                        b.isOpen
+                          ? "bg-[#1b1e26] hover:bg-[#252a36] text-neutral-200 border-[#2d3240]"
+                          : "bg-emerald-600 hover:bg-emerald-500 text-black border-emerald-500 shadow"
+                      }`}
                     >
                       {b.isOpen ? "Close Window" : "Re-open"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteBroadcast(b.id)}
+                      className="text-[11px] text-neutral-500 hover:text-red-400 transition-colors flex items-center gap-1"
+                      title="Delete Broadcast Announcement"
+                    >
+                      <Trash2 size={12} />
+                      <span>Delete</span>
                     </button>
                   </div>
                 </div>
@@ -367,44 +407,62 @@ export default function ExaminationsPage() {
 
         {/* Exams List */}
         <div className="grid gap-6">
-          {examinations.map((exam) => (
-            <Card key={exam.id} className="rounded-[5px] border border-[#23262d] bg-[#131519] overflow-hidden">
-              <div className="p-6 border-b border-[#1f2229] flex flex-col md:flex-row md:items-start justify-between gap-4">
-                <div>
-                  <div className="flex items-center gap-2.5">
-                    <Badge variant={exam.status === "Published" ? "success" : "neutral"}>
-                      {exam.status}
-                    </Badge>
-                    <span className="text-[11px] font-mono text-[#8d929d]">
-                      {exam.examType} · Semester {exam.semester} · {exam.academicYear}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold text-white mt-2">{exam.name}</h3>
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-[#cbd0dc] mt-2">
-                    <span className="flex items-center gap-1.5">
-                      <CalendarDays size={14} className="text-[#8d929d]" />
-                      {formatDate(exam.startDate)} &mdash; {formatDate(exam.endDate)}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Clock size={14} className="text-[#8d929d]" />
-                      {exam.session}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <MapPin size={14} className="text-[#8d929d]" />
-                      {exam.center}
-                    </span>
-                  </div>
-                </div>
+          {examinations.map((exam) => {
+            const activeExamBroadcast = broadcasts.find(
+              (b) => b.examinationId === exam.id && b.isOpen
+            );
 
-                <div className="flex items-center gap-2">
-                  <Button variant="secondary" size="sm" onClick={() => openEdit(exam)}>
-                    <Pencil size={13} /> Edit Window
-                  </Button>
-                  <Button variant="ghost" size="sm" className="text-[#f87171] hover:bg-[#2a1313]" onClick={() => handleDelete(exam)}>
-                    <Trash2 size={13} />
-                  </Button>
+            return (
+              <Card key={exam.id} className="rounded-[5px] border border-[#23262d] bg-[#131519] overflow-hidden">
+                <div className="p-6 border-b border-[#1f2229] flex flex-col md:flex-row md:items-start justify-between gap-4">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <Badge variant={exam.status === "Published" ? "success" : "neutral"}>
+                        {exam.status}
+                      </Badge>
+                      <span className="text-[11px] font-mono text-[#8d929d]">
+                        {exam.examType} · Semester {exam.semester} · {exam.academicYear}
+                      </span>
+                      {activeExamBroadcast ? (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[3px] bg-emerald-950/60 border border-emerald-600 text-emerald-300 text-[10px] font-mono">
+                          <Radio size={11} className="text-emerald-400 animate-pulse" /> Broadcast Active (Closes {formatDate(activeExamBroadcast.deadline)})
+                        </span>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => openBroadcastForExam(exam)}
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[3px] bg-[#1b1f28] hover:bg-[#252c3b] border border-[#2e374a] text-neutral-300 text-[10px] font-mono transition-colors"
+                        >
+                          <Radio size={11} className="text-amber-400" /> Broadcast Now
+                        </button>
+                      )}
+                    </div>
+                    <h3 className="text-lg font-bold text-white mt-2">{exam.name}</h3>
+                    <div className="flex flex-wrap items-center gap-4 text-xs text-[#cbd0dc] mt-2">
+                      <span className="flex items-center gap-1.5">
+                        <CalendarDays size={14} className="text-[#8d929d]" />
+                        {formatDate(exam.startDate)} &mdash; {formatDate(exam.endDate)}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Clock size={14} className="text-[#8d929d]" />
+                        {exam.session}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <MapPin size={14} className="text-[#8d929d]" />
+                        {exam.center}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <Button variant="secondary" size="sm" onClick={() => openEdit(exam)}>
+                      <Pencil size={13} /> Edit Window
+                    </Button>
+                    <Button variant="ghost" size="sm" className="text-[#f87171] hover:bg-[#2a1313]" onClick={() => handleDelete(exam)}>
+                      <Trash2 size={13} />
+                    </Button>
+                  </div>
                 </div>
-              </div>
 
               {/* Timetable Table */}
               <div className="p-6 bg-[#0e1014]">
@@ -439,7 +497,8 @@ export default function ExaminationsPage() {
                 </div>
               </div>
             </Card>
-          ))}
+          );
+        })}
         </div>
       </div>
 
@@ -544,71 +603,73 @@ export default function ExaminationsPage() {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                {formData.subjects.map((sub, idx) => (
-                  <div key={idx} className="p-3 bg-[#0d0e12] rounded-[4px] border border-[#22252e] grid grid-cols-[110px_1fr_130px_140px_110px_35px] gap-2 items-center text-xs">
-                    <select
-                      value={sub.subjectCode}
-                      onChange={(e) => updateSubjectRow(idx, "subjectCode", e.target.value)}
-                      className="h-8 rounded-[3px] border border-[#272a33] bg-[#14161c] px-2 text-xs text-white"
-                    >
-                      {subjects.map((s) => (
-                        <option key={s.id} value={s.code}>
-                          {s.code}
-                        </option>
-                      ))}
-                    </select>
+              <div className="overflow-x-auto w-full pb-2">
+                <div className="min-w-[640px] space-y-2">
+                  {formData.subjects.map((sub, idx) => (
+                    <div key={idx} className="p-3 bg-[#0d0e12] rounded-[4px] border border-[#22252e] grid grid-cols-[110px_1fr_130px_140px_110px_35px] gap-2 items-center text-xs">
+                      <select
+                        value={sub.subjectCode}
+                        onChange={(e) => updateSubjectRow(idx, "subjectCode", e.target.value)}
+                        className="h-8 rounded-[3px] border border-[#272a33] bg-[#14161c] px-2 text-xs text-white"
+                      >
+                        {subjects.map((s) => (
+                          <option key={s.id} value={s.code}>
+                            {s.code}
+                          </option>
+                        ))}
+                      </select>
 
-                    <input
-                      type="text"
-                      placeholder="Subject Name"
-                      value={sub.subjectName}
-                      onChange={(e) => updateSubjectRow(idx, "subjectName", e.target.value)}
-                      className="h-8 rounded-[3px] border border-[#272a33] bg-[#14161c] px-2 text-xs text-white"
-                    />
-
-                    <input
-                      type="date"
-                      value={sub.examDate.slice(0, 10)}
-                      onChange={(e) => updateSubjectRow(idx, "examDate", e.target.value)}
-                      className="h-8 rounded-[3px] border border-[#272a33] bg-[#14161c] px-2 text-xs text-white"
-                    />
-
-                    <div className="flex items-center gap-1">
                       <input
                         type="text"
-                        value={sub.startTime}
-                        onChange={(e) => updateSubjectRow(idx, "startTime", e.target.value)}
-                        placeholder="09:30"
-                        className="h-8 w-14 rounded-[3px] border border-[#272a33] bg-[#14161c] px-1 text-center text-xs text-white"
+                        placeholder="Subject Name"
+                        value={sub.subjectName}
+                        onChange={(e) => updateSubjectRow(idx, "subjectName", e.target.value)}
+                        className="h-8 rounded-[3px] border border-[#272a33] bg-[#14161c] px-2 text-xs text-white"
                       />
-                      <span className="text-[#6c7280]">–</span>
+
+                      <input
+                        type="date"
+                        value={sub.examDate.slice(0, 10)}
+                        onChange={(e) => updateSubjectRow(idx, "examDate", e.target.value)}
+                        className="h-8 rounded-[3px] border border-[#272a33] bg-[#14161c] px-2 text-xs text-white"
+                      />
+
+                      <div className="flex items-center gap-1">
+                        <input
+                          type="text"
+                          value={sub.startTime}
+                          onChange={(e) => updateSubjectRow(idx, "startTime", e.target.value)}
+                          placeholder="09:30"
+                          className="h-8 w-14 rounded-[3px] border border-[#272a33] bg-[#14161c] px-1 text-center text-xs text-white"
+                        />
+                        <span className="text-[#6c7280]">–</span>
+                        <input
+                          type="text"
+                          value={sub.endTime}
+                          onChange={(e) => updateSubjectRow(idx, "endTime", e.target.value)}
+                          placeholder="12:30"
+                          className="h-8 w-14 rounded-[3px] border border-[#272a33] bg-[#14161c] px-1 text-center text-xs text-white"
+                        />
+                      </div>
+
                       <input
                         type="text"
-                        value={sub.endTime}
-                        onChange={(e) => updateSubjectRow(idx, "endTime", e.target.value)}
-                        placeholder="12:30"
-                        className="h-8 w-14 rounded-[3px] border border-[#272a33] bg-[#14161c] px-1 text-center text-xs text-white"
+                        placeholder="Room (e.g. C-201)"
+                        value={sub.room}
+                        onChange={(e) => updateSubjectRow(idx, "room", e.target.value)}
+                        className="h-8 rounded-[3px] border border-[#272a33] bg-[#14161c] px-2 text-xs text-white"
                       />
+
+                      <button
+                        type="button"
+                        onClick={() => removeSubjectRow(idx)}
+                        className="h-8 w-8 text-[#f87171] hover:bg-[#2a1313] rounded flex items-center justify-center cursor-pointer"
+                      >
+                        <Trash2 size={13} />
+                      </button>
                     </div>
-
-                    <input
-                      type="text"
-                      placeholder="Room (e.g. C-201)"
-                      value={sub.room}
-                      onChange={(e) => updateSubjectRow(idx, "room", e.target.value)}
-                      className="h-8 rounded-[3px] border border-[#272a33] bg-[#14161c] px-2 text-xs text-white"
-                    />
-
-                    <button
-                      type="button"
-                      onClick={() => removeSubjectRow(idx)}
-                      className="h-8 w-8 text-[#f87171] hover:bg-[#2a1313] rounded flex items-center justify-center cursor-pointer"
-                    >
-                      <Trash2 size={13} />
-                    </button>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -634,33 +695,80 @@ export default function ExaminationsPage() {
         >
           <form onSubmit={handleBroadcastSubmit} className="space-y-4 text-xs">
             <div className="p-3 rounded-[4px] bg-[#101217] border border-[#23262d] text-[#8d929d] leading-relaxed">
-              Broadcasting opens the exam application window for the selected semester&apos;s candidates and sends an active dues review notice to the Accounts Section.
+              Broadcasting opens the exam application window for the target examination & semester cohort, notifying candidates, Accounts Section, and the Principal.
             </div>
 
             <div>
               <label className="text-xs font-semibold text-white block mb-1">
-                Target Semester
+                Select Examination Session
               </label>
               <select
-                value={broadcastForm.semester}
-                onChange={(e) =>
-                  setBroadcastForm((prev) => ({
-                    ...prev,
-                    semester: Number(e.target.value),
-                    title: `Hall Ticket Application for ${e.target.value}th Sem is Open`,
-                  }))
-                }
+                value={broadcastForm.examinationId}
+                onChange={(e) => {
+                  const examId = Number(e.target.value);
+                  const selected = examinations.find((ex) => ex.id === examId);
+                  if (selected) {
+                    setBroadcastForm((prev) => ({
+                      ...prev,
+                      examinationId: selected.id,
+                      semester: selected.semester,
+                      title: `${selected.name} - Application Open`,
+                      description: `Hall ticket application window for ${selected.name} is now open. Verify registered subjects, report arrears, and upload fee receipt.`,
+                      deadline: selected.startDate ? selected.startDate : prev.deadline,
+                    }));
+                  }
+                }}
                 className="h-10 w-full rounded-[4px] border border-[#2a2e38] bg-[#0c0d10] px-3 text-xs text-white outline-none focus:border-white font-mono"
               >
-                <option value={1}>1st Semester</option>
-                <option value={2}>2nd Semester</option>
-                <option value={3}>3rd Semester</option>
-                <option value={4}>4th Semester</option>
-                <option value={5}>5th Semester</option>
-                <option value={6}>6th Semester</option>
-                <option value={7}>7th Semester</option>
-                <option value={8}>8th Semester</option>
+                {examinations.map((ex) => (
+                  <option key={ex.id} value={ex.id}>
+                    {ex.name} (Semester {ex.semester} · {ex.academicYear})
+                  </option>
+                ))}
               </select>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="text-xs font-semibold text-white block mb-1">
+                  Target Semester
+                </label>
+                <select
+                  value={broadcastForm.semester}
+                  onChange={(e) => {
+                    const sem = Number(e.target.value);
+                    const matchedExam = examinations.find((ex) => ex.semester === sem) || examinations[0];
+                    setBroadcastForm((prev) => ({
+                      ...prev,
+                      semester: sem,
+                      examinationId: matchedExam ? matchedExam.id : prev.examinationId,
+                      title: `Hall Ticket Application for Semester ${sem} is Open`,
+                    }));
+                  }}
+                  className="h-10 w-full rounded-[4px] border border-[#2a2e38] bg-[#0c0d10] px-3 text-xs text-white outline-none focus:border-white font-mono"
+                >
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
+                    <option key={s} value={s}>
+                      Semester {s}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-white block mb-1">
+                  Application Submission Deadline
+                </label>
+                <input
+                  type="date"
+                  required
+                  value={broadcastForm.deadline}
+                  onChange={(e) =>
+                    setBroadcastForm((prev) => ({ ...prev, deadline: e.target.value }))
+                  }
+                  className="h-10 w-full rounded-[4px] border border-[#2a2e38] bg-[#0c0d10] px-3 text-xs text-white outline-none focus:border-white font-mono"
+                />
+              </div>
             </div>
 
             <div>
@@ -674,23 +782,8 @@ export default function ExaminationsPage() {
                 onChange={(e) =>
                   setBroadcastForm((prev) => ({ ...prev, title: e.target.value }))
                 }
-                placeholder="e.g. Hall Ticket Application for 4th Sem is Open"
+                placeholder="e.g. IV Semester Examination Application Open"
                 className="h-10 w-full rounded-[4px] border border-[#2a2e38] bg-[#0c0d10] px-3 text-xs text-white outline-none focus:border-white font-sans"
-              />
-            </div>
-
-            <div>
-              <label className="text-xs font-semibold text-white block mb-1">
-                Application Submission Deadline
-              </label>
-              <input
-                type="date"
-                required
-                value={broadcastForm.deadline}
-                onChange={(e) =>
-                  setBroadcastForm((prev) => ({ ...prev, deadline: e.target.value }))
-                }
-                className="h-10 w-full rounded-[4px] border border-[#2a2e38] bg-[#0c0d10] px-3 text-xs text-white outline-none focus:border-white font-mono"
               />
             </div>
 

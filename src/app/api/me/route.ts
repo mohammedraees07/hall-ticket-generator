@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
       }
       if (!student && auth.email) {
         const matches = await dataStore.getStudents({ search: auth.email });
-        student = matches.find((s) => s.email.toLowerCase() === auth.email.toLowerCase()) || matches[0] || null;
+        student = matches.find((s) => s.email.toLowerCase() === auth.email.toLowerCase()) || null;
       }
 
       const [applications, hallTickets, broadcasts, settings] = await Promise.all([

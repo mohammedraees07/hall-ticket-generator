@@ -47,12 +47,14 @@ export async function getAuthContext(req: NextRequest): Promise<AuthContext | nu
     const devUsn = req.cookies.get("sb-usn")?.value;
     const devStudentId = req.cookies.get("sb-student-id")?.value;
     if (devRole && ["ADMIN", "STAFF", "STUDENT", "ACCOUNTS", "PRINCIPAL"].includes(devRole)) {
+      const sId = devStudentId ? Number(devStudentId) : (devUsn === "1RV22CS099" ? 6 : 1);
+      const sUsn = devUsn || (sId === 6 ? "1RV22CS099" : "1RV22CS001");
       return {
         id: `session-${devRole.toLowerCase()}`,
         email: `${devRole.toLowerCase()}@pace.ac.in`,
         role: devRole,
-        usn: devUsn || (devRole === "STUDENT" ? "1RV22CS001" : undefined),
-        studentId: devStudentId ? Number(devStudentId) : (devRole === "STUDENT" ? 1 : undefined),
+        usn: devRole === "STUDENT" ? sUsn : undefined,
+        studentId: devRole === "STUDENT" ? sId : undefined,
       };
     }
     return null;
@@ -65,12 +67,14 @@ export async function getAuthContext(req: NextRequest): Promise<AuthContext | nu
       const devUsn = req.cookies.get("sb-usn")?.value;
       const devStudentId = req.cookies.get("sb-student-id")?.value;
       if (devRole && ["ADMIN", "STAFF", "STUDENT", "ACCOUNTS", "PRINCIPAL"].includes(devRole)) {
+        const sId = devStudentId ? Number(devStudentId) : (devUsn === "1RV22CS099" ? 6 : 1);
+        const sUsn = devUsn || (sId === 6 ? "1RV22CS099" : "1RV22CS001");
         return {
           id: `session-${devRole.toLowerCase()}`,
           email: `${devRole.toLowerCase()}@pace.ac.in`,
           role: devRole,
-          usn: devUsn || (devRole === "STUDENT" ? "1RV22CS001" : undefined),
-          studentId: devStudentId ? Number(devStudentId) : (devRole === "STUDENT" ? 1 : undefined),
+          usn: devRole === "STUDENT" ? sUsn : undefined,
+          studentId: devRole === "STUDENT" ? sId : undefined,
         };
       }
       return null;
@@ -119,11 +123,17 @@ export async function getAuthContext(req: NextRequest): Promise<AuthContext | nu
     }
 
     const cookieStudentId = req.cookies.get("sb-student-id")?.value;
-    if (!studentId && cookieStudentId) studentId = Number(cookieStudentId);
-    if (!studentId && role === "STUDENT") studentId = 1;
+    const cookieUsn = req.cookies.get("sb-usn")?.value;
+    let usn = data.user.app_metadata?.usn || data.user.user_metadata?.usn || cookieUsn;
 
-    let usn = data.user.app_metadata?.usn || data.user.user_metadata?.usn || req.cookies.get("sb-usn")?.value;
-    if (!usn && role === "STUDENT") usn = "1RV22CS001";
+    if (!studentId && cookieStudentId) studentId = Number(cookieStudentId);
+    if (!studentId && role === "STUDENT") {
+      studentId = usn?.includes("099") || data.user.email?.includes("ayaan") ? 6 : 1;
+    }
+
+    if (!usn && role === "STUDENT") {
+      usn = studentId === 6 ? "1RV22CS099" : "1RV22CS001";
+    }
 
     return {
       id: data.user.id,

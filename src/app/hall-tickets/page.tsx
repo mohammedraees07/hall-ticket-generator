@@ -20,7 +20,6 @@ import {
   AlertTriangle,
   Printer,
   Search,
-  Sparkles,
   User,
   Eye,
   FileCheck2,
@@ -400,7 +399,7 @@ export default function HallTicketsPage() {
                           onClick={() => handleGenerateClick(app)}
                           className="h-8 px-3 text-xs font-semibold"
                         >
-                          <Sparkles size={12} />
+                          <ClipboardCheck size={12} />
                           <span>{isTicketIssued ? "View / Print Ticket" : "Generate Hall Ticket"}</span>
                         </Button>
                       ) : (
@@ -534,7 +533,7 @@ export default function HallTicketsPage() {
                         handleGenerateClick(target);
                       }}
                     >
-                      <Sparkles size={13} />
+                      <ArrowRight size={13} />
                       <span>Proceed to Hall Ticket</span>
                     </Button>
                   )}

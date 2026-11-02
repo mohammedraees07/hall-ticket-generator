@@ -20,7 +20,6 @@ import {
   CheckCircle2,
   ShieldCheck,
   ArrowLeft,
-  Sparkles,
 } from "lucide-react";
 
 export default function PrincipalSettingsPage() {

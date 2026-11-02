@@ -47,27 +47,31 @@ export function Modal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm modal-backdrop">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm modal-backdrop"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.72)" }}
+    >
       <div
         className={cn(
-          "w-full rounded-[5px] border border-[#272a33] bg-[#121418] text-white shadow-2xl overflow-hidden max-h-[92vh] flex flex-col",
+          "modal-dialog w-full rounded-[5px] border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] shadow-2xl overflow-hidden max-h-[92vh] flex flex-col transition-colors",
           maxWidths[maxWidth]
         )}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-[#21242c] px-6 py-4">
+        <div className="flex items-center justify-between border-b border-[var(--border)] px-6 py-4 bg-[var(--card)] text-[var(--foreground)]">
           <div>
-            <h2 className="text-base font-semibold text-white tracking-tight">{title}</h2>
-            {subtitle && <p className="text-xs text-[#8e939e] mt-0.5">{subtitle}</p>}
+            <h2 className="text-base font-semibold text-[var(--foreground)] tracking-tight">{title}</h2>
+            {subtitle && <p className="text-xs text-[var(--muted-foreground)] mt-0.5">{subtitle}</p>}
           </div>
           <button
             onClick={onClose}
-            className="rounded-[4px] p-1.5 text-[#9ca3af] hover:bg-[#1f2229] hover:text-white transition-colors cursor-pointer"
+            aria-label="Close modal"
+            className="rounded-[4px] p-1.5 text-[var(--muted-foreground)] hover:bg-[var(--accent)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
           >
             <X size={16} />
           </button>
         </div>
-        <div className="overflow-y-auto p-6">{children}</div>
+        <div className="overflow-y-auto p-6 bg-[var(--card)] text-[var(--foreground)]">{children}</div>
       </div>
     </div>
   );

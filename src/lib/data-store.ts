@@ -455,6 +455,27 @@ let students: Student[] = [
     attendancePercentage: 84,
     feeStatus: "Cleared",
   },
+  {
+    id: 6,
+    studentId: "STU-2022-099",
+    usn: "1RV22CS099",
+    name: "Ayaan Ahmed",
+    dob: "2004-04-12",
+    gender: "Male",
+    email: "ayaan.student@pace.ac.in",
+    phone: "+91 98451 90822",
+    address: "24, Green Glen Layout, Bengaluru",
+    course: "B.Tech Computer Science & Engineering",
+    department: "Computer Science & Engineering",
+    departmentId: 1,
+    courseId: 1,
+    semester: 4,
+    section: "A",
+    academicYear: "2024-25",
+    photoUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&auto=format&fit=crop&q=80",
+    attendancePercentage: 86,
+    feeStatus: "Cleared",
+  },
 ];
 
 // Dynamic date helpers anchored to current real system date
@@ -1124,13 +1145,26 @@ export const dataStore = {
 
   // Students
   async getStudents(filters?: { search?: string; semester?: number; department?: string }): Promise<Student[]> {
+    let list: Student[] = [];
     if (supabaseStore.isConfigured()) {
-      return (await supabaseStore.getStudents(filters)) || [];
+      try {
+        const supa = await supabaseStore.getStudents(filters);
+        if (supa && supa.length > 0) list = supa;
+      } catch (err) {
+        console.warn("Supabase getStudents error:", err);
+      }
     }
-    return students.filter((s) => {
+    // Merge any missing local students into list
+    for (const localS of students) {
+      if (!list.some((s) => s.id === localS.id || s.usn.toLowerCase() === localS.usn.toLowerCase())) {
+        list.push(localS);
+      }
+    }
+
+    return list.filter((s) => {
       const matchSearch =
         !filters?.search ||
-        [s.name, s.usn, s.studentId]
+        [s.name, s.usn, s.studentId, s.email]
           .some((val) => val.toLowerCase().includes(filters.search!.toLowerCase()));
       const matchSem = !filters?.semester || s.semester === filters.semester;
       const matchDept =
@@ -1142,21 +1176,29 @@ export const dataStore = {
 
   async getStudentById(id: number): Promise<Student | null> {
     if (supabaseStore.isConfigured()) {
-      return await supabaseStore.getStudentById(id);
+      try {
+        const supa = await supabaseStore.getStudentById(id);
+        if (supa) return supa;
+      } catch (err) {
+        console.warn("Supabase getStudentById error:", err);
+      }
     }
     return students.find((s) => s.id === id) || null;
   },
 
   async getStudentByUsn(usn: string): Promise<Student | null> {
     if (supabaseStore.isConfigured()) {
-      const list = await supabaseStore.getStudents({ search: usn });
-      if (list && list.length > 0) {
-        const match = list.find(
-          (s) => s.usn.toLowerCase() === usn.toLowerCase() || s.studentId.toLowerCase() === usn.toLowerCase()
-        );
-        return match || null;
+      try {
+        const list = await supabaseStore.getStudents({ search: usn });
+        if (list && list.length > 0) {
+          const match = list.find(
+            (s) => s.usn.toLowerCase() === usn.toLowerCase() || s.studentId.toLowerCase() === usn.toLowerCase()
+          );
+          if (match) return match;
+        }
+      } catch (err) {
+        console.warn("Supabase getStudentByUsn error:", err);
       }
-      return null;
     }
     return (
       students.find(
@@ -1816,50 +1858,106 @@ export const dataStore = {
     courseId?: number;
     actorId?: string;
   }): Promise<BroadcastNotice> {
+    const exam = examinations.find((e) => e.id === Number(input.examinationId));
+    const disk = loadDiskBroadcasts();
+    if (disk.length > 0) broadcasts = disk;
+
+    const existingIdx = broadcasts.findIndex(
+      (b) => b.examinationId === Number(input.examinationId) && b.semester === Number(input.semester)
+    );
+
+    let resultNotice: BroadcastNotice;
+
+    if (existingIdx !== -1) {
+      broadcasts[existingIdx] = {
+        ...broadcasts[existingIdx],
+        examinationName: exam?.name || broadcasts[existingIdx].examinationName,
+        title: input.title,
+        description: input.description || broadcasts[existingIdx].description,
+        deadline: input.deadline,
+        isOpen: true,
+      };
+      resultNotice = broadcasts[existingIdx];
+    } else {
+      resultNotice = {
+        id: getNextId("broadcast"),
+        examinationId: Number(input.examinationId),
+        examinationName: exam?.name || `${input.semester}th Semester Examination`,
+        semester: Number(input.semester),
+        title: input.title,
+        description: input.description || `Hall Ticket Application for Semester ${input.semester} is open.`,
+        deadline: input.deadline,
+        isOpen: true,
+        announcedAt: new Date().toISOString(),
+      };
+      broadcasts.unshift(resultNotice);
+    }
+
+    saveDiskBroadcasts(broadcasts);
+
     if (supabaseStore.isConfigured()) {
       try {
         const created = await supabaseStore.createBroadcast({
-          examinationId: input.examinationId, semester: input.semester, title: input.title,
-          description: input.description, deadline: input.deadline,
-          academicYear: input.academicYear || "", courseId: input.courseId, actorId: input.actorId || "admin-system",
+          examinationId: input.examinationId,
+          semester: input.semester,
+          title: input.title,
+          description: input.description,
+          deadline: input.deadline,
+          academicYear: input.academicYear || "",
+          courseId: input.courseId,
+          actorId: input.actorId || "admin-system",
         });
-        if (created) return created;
+        if (created) {
+          resultNotice = created;
+        }
       } catch (err) {
-        console.warn("Supabase createBroadcast error, saving to disk storage:", err);
+        console.warn("Supabase createBroadcast error, disk storage was updated:", err);
       }
     }
-    const exam = examinations.find((e) => e.id === Number(input.examinationId));
-    const newNotice: BroadcastNotice = {
-      id: getNextId("broadcast"),
-      examinationId: Number(input.examinationId),
-      examinationName: exam?.name || `${input.semester}th Semester Examination`,
-      semester: Number(input.semester),
-      title: input.title,
-      description: input.description || `Hall Ticket Application for Semester ${input.semester} is open.`,
-      deadline: input.deadline,
-      isOpen: true,
-      announcedAt: new Date().toISOString(),
-    };
 
-    broadcasts.unshift(newNotice);
-    saveDiskBroadcasts(broadcasts);
-    return newNotice;
+    return resultNotice;
   },
 
   async toggleBroadcast(id: number, isOpen: boolean): Promise<BroadcastNotice | null> {
+    const disk = loadDiskBroadcasts();
+    if (disk.length > 0) broadcasts = disk;
+
+    const notice = broadcasts.find((b) => b.id === id);
+    if (notice) {
+      notice.isOpen = isOpen;
+      saveDiskBroadcasts(broadcasts);
+    }
+
     if (supabaseStore.isConfigured()) {
       try {
-        const updated = await supabaseStore.toggleBroadcast(id, isOpen);
-        if (updated) return updated;
+        await supabaseStore.toggleBroadcast(id, isOpen);
       } catch (err) {
         console.warn("Supabase toggleBroadcast error:", err);
       }
     }
-    const notice = broadcasts.find((b) => b.id === id);
-    if (!notice) return null;
-    notice.isOpen = isOpen;
-    saveDiskBroadcasts(broadcasts);
-    return { ...notice };
+
+    return notice ? { ...notice } : null;
+  },
+
+  async deleteBroadcast(id: number): Promise<boolean> {
+    const disk = loadDiskBroadcasts();
+    if (disk.length > 0) broadcasts = disk;
+
+    const idx = broadcasts.findIndex((b) => b.id === id);
+    if (idx !== -1) {
+      broadcasts.splice(idx, 1);
+      saveDiskBroadcasts(broadcasts);
+    }
+
+    if (supabaseStore.isConfigured()) {
+      try {
+        await supabaseStore.deleteBroadcast(id);
+      } catch (err) {
+        console.warn("Supabase deleteBroadcast error:", err);
+      }
+    }
+
+    return true;
   },
 
   // =========================================================================

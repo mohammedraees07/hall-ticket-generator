@@ -73,7 +73,7 @@ export default function DashboardPage() {
         <div className="space-y-6">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-28 rounded-[5px] bg-[#14161b] animate-pulse border border-[#22252c]" />
+              <div key={i} className="h-28 rounded-[5px] bg-[var(--muted)] animate-pulse border border-[var(--border)]" />
             ))}
           </div>
         </div>
@@ -91,12 +91,12 @@ export default function DashboardPage() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#9ca3af]">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--muted-foreground)]">
                 Controller of Examinations
               </span>
             </div>
-            <h2 className="text-2xl font-bold tracking-tight text-white">Autonomous Examination Command</h2>
-            <p className="text-xs text-[#8d929d] mt-1">
+            <h2 className="text-2xl font-bold tracking-tight text-[var(--foreground)]">Autonomous Examination Command</h2>
+            <p className="text-xs text-[var(--muted-foreground)] mt-1">
               Active verification, candidate eligibility compliance, and admit card issuing registers.
             </p>
           </div>
@@ -112,62 +112,62 @@ export default function DashboardPage() {
         {/* KPI Grid (Strictly 5px Border Radius & Charcoal Theme) */}
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {/* Total Candidates */}
-          <Card className="rounded-[5px] border border-[#23262d] bg-[#131519] p-5 hover:border-[#353944] transition-colors">
-            <div className="flex items-center justify-between text-xs text-[#8d929d]">
+          <Card className="p-5 hover:border-[var(--ring)] transition-colors">
+            <div className="flex items-center justify-between text-xs text-[var(--muted-foreground)]">
               <span className="font-medium">Total Registered Candidates</span>
-              <Users size={16} className="text-[#9ca3af]" />
+              <Users size={16} className="text-[var(--muted-foreground)]" />
             </div>
-            <div className="mt-3 text-3xl font-bold text-white font-mono tracking-tight">
+            <div className="mt-3 text-3xl font-bold text-[var(--foreground)] font-mono tracking-tight">
               {totals?.students ?? 0}
             </div>
-            <div className="mt-3 flex items-center justify-between text-[11px] text-[#717682] border-t border-[#1e2128] pt-2.5">
+            <div className="mt-3 flex items-center justify-between text-[11px] text-[var(--muted-foreground)] border-t border-[var(--border)] pt-2.5">
               <span>Across {totals?.departments ?? 0} departments</span>
-              <Link href="/students" className="text-white hover:underline flex items-center gap-1 font-medium">
+              <Link href="/students" className="text-[var(--foreground)] hover:underline flex items-center gap-1 font-medium">
                 Register <ArrowRight size={11} />
               </Link>
             </div>
           </Card>
 
           {/* Exam Eligible Candidates */}
-          <Card className="rounded-[5px] border border-[#23262d] bg-[#131519] p-5 hover:border-[#353944] transition-colors">
-            <div className="flex items-center justify-between text-xs text-[#8d929d]">
+          <Card className="p-5 hover:border-[var(--ring)] transition-colors">
+            <div className="flex items-center justify-between text-xs text-[var(--muted-foreground)]">
               <span className="font-medium">Exam Eligible Candidates</span>
-              <FileCheck2 size={16} className="text-white" />
+              <FileCheck2 size={16} className="text-[var(--foreground)]" />
             </div>
-            <div className="mt-3 text-3xl font-bold text-white font-mono tracking-tight">
+            <div className="mt-3 text-3xl font-bold text-[var(--foreground)] font-mono tracking-tight">
               {totals?.eligibleStudents ?? 0}
             </div>
-            <div className="mt-3 flex items-center justify-between text-[11px] text-[#717682] border-t border-[#1e2128] pt-2.5">
+            <div className="mt-3 flex items-center justify-between text-[11px] text-[var(--muted-foreground)] border-t border-[var(--border)] pt-2.5">
               <span>Attendance &ge; 75% & Fees Clear</span>
             </div>
           </Card>
 
           {/* Ineligible / Flagged Candidates */}
-          <Card className="rounded-[5px] border border-[#23262d] bg-[#131519] p-5 hover:border-[#353944] transition-colors">
-            <div className="flex items-center justify-between text-xs text-[#8d929d]">
+          <Card className="p-5 hover:border-[var(--ring)] transition-colors">
+            <div className="flex items-center justify-between text-xs text-[var(--muted-foreground)]">
               <span className="font-medium">Flagged / Ineligible</span>
-              <ShieldCheck size={16} className="text-white" />
+              <ShieldCheck size={16} className="text-[var(--foreground)]" />
             </div>
-            <div className="mt-3 text-3xl font-bold text-white font-mono tracking-tight">
+            <div className="mt-3 text-3xl font-bold text-[var(--foreground)] font-mono tracking-tight">
               {totals?.ineligibleStudents ?? 0}
             </div>
-            <div className="mt-3 flex items-center justify-between text-[11px] text-[#717682] border-t border-[#1e2128] pt-2.5">
+            <div className="mt-3 flex items-center justify-between text-[11px] text-[var(--muted-foreground)] border-t border-[var(--border)] pt-2.5">
               <span>Attendance short or fee dues</span>
             </div>
           </Card>
 
           {/* Issued Hall Tickets */}
-          <Card className="rounded-[5px] border border-[#23262d] bg-[#131519] p-5 hover:border-[#353944] transition-colors">
-            <div className="flex items-center justify-between text-xs text-[#8d929d]">
+          <Card className="p-5 hover:border-[var(--ring)] transition-colors">
+            <div className="flex items-center justify-between text-xs text-[var(--muted-foreground)]">
               <span className="font-medium">Admit Cards Issued</span>
-              <ClipboardCheck size={16} className="text-white" />
+              <ClipboardCheck size={16} className="text-[var(--foreground)]" />
             </div>
-            <div className="mt-3 text-3xl font-bold text-white font-mono tracking-tight">
+            <div className="mt-3 text-3xl font-bold text-[var(--foreground)] font-mono tracking-tight">
               {totals?.hallTickets ?? 0}
             </div>
-            <div className="mt-3 flex items-center justify-between text-[11px] text-[#717682] border-t border-[#1e2128] pt-2.5">
+            <div className="mt-3 flex items-center justify-between text-[11px] text-[var(--muted-foreground)] border-t border-[var(--border)] pt-2.5">
               <span>With dynamic QR verification</span>
-              <Link href="/hall-tickets" className="text-white hover:underline flex items-center gap-1 font-medium">
+              <Link href="/hall-tickets" className="text-[var(--foreground)] hover:underline flex items-center gap-1 font-medium">
                 View Register <ArrowRight size={11} />
               </Link>
             </div>
@@ -177,8 +177,8 @@ export default function DashboardPage() {
         {/* Content Section: 2 Columns */}
         <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr]">
           {/* Upcoming Examinations */}
-          <Card className="rounded-[5px] border border-[#23262d] bg-[#131519]">
-            <CardHeader className="flex flex-row items-center justify-between border-b border-[#1f2229] p-5">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between p-5 border-b border-[var(--border)]">
               <div>
                 <CardTitle>Active Examination Schedules</CardTitle>
                 <CardDescription>Upcoming semester exam windows and test centers</CardDescription>
@@ -189,20 +189,20 @@ export default function DashboardPage() {
                 </Button>
               </Link>
             </CardHeader>
-            <CardContent className="p-0 divide-y divide-[#1f2229]">
+            <CardContent className="p-0 divide-y divide-[var(--border)]">
               {data?.upcomingExaminations?.map((exam) => (
-                <div key={exam.id} className="p-5 flex items-center justify-between gap-4 hover:bg-[#16181f] transition-colors">
+                <div key={exam.id} className="p-5 flex items-center justify-between gap-4 hover:bg-[var(--accent)] transition-colors">
                   <div className="flex items-start gap-3">
-                    <div className="h-10 w-10 rounded-[4px] bg-[#1a1c22] border border-[#272b35] flex flex-col items-center justify-center font-mono text-[10px] text-white">
+                    <div className="h-10 w-10 rounded-[4px] bg-[var(--muted)] border border-[var(--border)] flex flex-col items-center justify-center font-mono text-[10px] text-[var(--foreground)]">
                       <span>{new Date(exam.startDate).toLocaleDateString("en", { month: "short" }).toUpperCase()}</span>
                       <span className="font-bold text-sm leading-none mt-0.5">{new Date(exam.startDate).getDate()}</span>
                     </div>
                     <div>
-                      <h4 className="text-xs font-semibold text-white">{exam.name}</h4>
-                      <p className="text-[11px] text-[#7f8491] mt-0.5">
+                      <h4 className="text-xs font-semibold text-[var(--foreground)]">{exam.name}</h4>
+                      <p className="text-[11px] text-[var(--muted-foreground)] mt-0.5">
                         {exam.examType} · Semester {exam.semester} · {exam.center}
                       </p>
-                      <p className="text-[10px] font-mono text-[#636875] mt-1">
+                      <p className="text-[10px] font-mono text-[var(--muted-foreground)] mt-1">
                         Window: {formatDate(exam.startDate)} &mdash; {formatDate(exam.endDate)} ({exam.session})
                       </p>
                     </div>
@@ -216,13 +216,13 @@ export default function DashboardPage() {
           </Card>
 
           {/* Department Breakdown */}
-          <Card className="rounded-[5px] border border-[#23262d] bg-[#131519]">
-            <CardHeader className="p-5 border-b border-[#1f2229] flex flex-row items-center justify-between">
+          <Card>
+            <CardHeader className="p-5 border-b border-[var(--border)] flex flex-row items-center justify-between">
               <div>
                 <CardTitle>Department Allotments</CardTitle>
                 <CardDescription>Live candidate enrollments by academic department</CardDescription>
               </div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#9ca3af] px-2 py-0.5 rounded-[3px] bg-[#1a1c22]">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--muted-foreground)] px-2 py-0.5 rounded-[3px] bg-[var(--muted)] border border-[var(--border)]">
                 Live Register
               </span>
             </CardHeader>
@@ -233,14 +233,14 @@ export default function DashboardPage() {
                 return (
                   <div key={dept.code} className="space-y-1.5">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-medium text-white">{dept.name}</span>
-                      <span className="font-mono text-[#cbd0dc] font-semibold">
+                      <span className="font-medium text-[var(--foreground)]">{dept.name}</span>
+                      <span className="font-mono text-[var(--foreground)] font-semibold">
                         {dept.count} {dept.count === 1 ? "candidate" : "candidates"}
                       </span>
                     </div>
-                    <div className="h-2 w-full rounded-[2px] bg-[#1a1c22] overflow-hidden">
+                    <div className="h-2 w-full rounded-[2px] bg-[var(--muted)] border border-[var(--border)] overflow-hidden">
                       <div
-                        className="h-full bg-white transition-all duration-300"
+                        className="h-full bg-[var(--foreground)] transition-all duration-300"
                         style={{ width: `${percent}%` }}
                       />
                     </div>
@@ -252,8 +252,8 @@ export default function DashboardPage() {
         </div>
 
         {/* Recently Generated Hall Tickets */}
-        <Card className="rounded-[5px] border border-[#23262d] bg-[#131519]">
-          <CardHeader className="flex flex-row items-center justify-between border-b border-[#1f2229] p-5">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between border-b border-[var(--border)] p-5">
             <div>
               <CardTitle>Recently Issued Admit Cards</CardTitle>
               <CardDescription>Official examination documents with digital verification tokens</CardDescription>
@@ -268,7 +268,7 @@ export default function DashboardPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="border-b border-[#1f2229] bg-[#0f1013] text-[#7f8592] text-[11px] font-mono uppercase tracking-wider">
+                  <tr className="border-b border-[var(--border)] bg-[var(--muted)] text-[var(--muted-foreground)] text-[11px] font-mono uppercase tracking-wider">
                     <th className="p-4 font-semibold">Ticket No</th>
                     <th className="p-4 font-semibold">Candidate</th>
                     <th className="p-4 font-semibold">USN</th>
@@ -277,14 +277,14 @@ export default function DashboardPage() {
                     <th className="p-4 font-semibold text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#1f2229]">
+                <tbody className="divide-y divide-[var(--border)]">
                   {data?.recentHallTickets?.map((ticket) => (
-                    <tr key={ticket.id} className="hover:bg-[#16181f] transition-colors">
-                      <td className="p-4 font-mono font-bold text-white">{ticket.number}</td>
-                      <td className="p-4 font-semibold text-white">{ticket.studentName}</td>
-                      <td className="p-4 font-mono text-[#9ca3af]">{ticket.usn}</td>
-                      <td className="p-4 text-[#cbd0dc]">{ticket.course}</td>
-                      <td className="p-4 text-[#8d929d]">{ticket.examinationName}</td>
+                    <tr key={ticket.id} className="hover:bg-[var(--accent)] transition-colors">
+                      <td className="p-4 font-mono font-bold text-[var(--foreground)]">{ticket.number}</td>
+                      <td className="p-4 font-semibold text-[var(--foreground)]">{ticket.studentName}</td>
+                      <td className="p-4 font-mono text-[var(--muted-foreground)]">{ticket.usn}</td>
+                      <td className="p-4 text-[var(--foreground)]">{ticket.course}</td>
+                      <td className="p-4 text-[var(--muted-foreground)]">{ticket.examinationName}</td>
                       <td className="p-4 text-right">
                         <Button
                           variant="secondary"

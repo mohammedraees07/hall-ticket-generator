@@ -12,21 +12,21 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full space-y-1.5">
         {label && (
-          <label className="block text-xs font-medium text-[#9ca3af] uppercase tracking-wide">
+          <label className="block text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wide">
             {label}
           </label>
         )}
         <input
           type={type}
           className={cn(
-            "flex h-9 w-full rounded-[5px] border border-[#272a33] bg-[#0d0e12] px-3 py-1 text-xs text-white placeholder:text-[#525866] outline-none transition-colors focus:border-white focus:ring-1 focus:ring-white disabled:cursor-not-allowed disabled:opacity-50",
-            error && "border-[#ef4444] focus:border-[#ef4444] focus:ring-[#ef4444]",
+            "flex h-9 w-full rounded-[5px] border border-[var(--border)] bg-[var(--background)] px-3 py-1 text-xs text-[var(--foreground)] placeholder:text-[var(--muted-foreground)] outline-none transition-colors focus:border-[var(--foreground)] focus:ring-1 focus:ring-[var(--foreground)] disabled:cursor-not-allowed disabled:opacity-50",
+            error && "border-red-500 focus:border-red-500 focus:ring-red-500",
             className
           )}
           ref={ref}
           {...props}
         />
-        {error && <p className="text-[11px] text-[#ef4444]">{error}</p>}
+        {error && <p className="text-[11px] text-red-500">{error}</p>}
       </div>
     );
   }
@@ -44,14 +44,14 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="w-full space-y-1.5">
         {label && (
-          <label className="block text-xs font-medium text-[#9ca3af] uppercase tracking-wide">
+          <label className="block text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wide">
             {label}
           </label>
         )}
         <select
           className={cn(
-            "flex h-9 w-full rounded-[5px] border border-[#272a33] bg-[#0d0e12] px-3 py-1 text-xs text-white outline-none transition-colors focus:border-white focus:ring-1 focus:ring-white disabled:cursor-not-allowed disabled:opacity-50",
-            error && "border-[#ef4444] focus:border-[#ef4444] focus:ring-[#ef4444]",
+            "flex h-9 w-full rounded-[5px] border border-[var(--border)] bg-[var(--background)] px-3 py-1 text-xs text-[var(--foreground)] outline-none transition-colors focus:border-[var(--foreground)] focus:ring-1 focus:ring-[var(--foreground)] disabled:cursor-not-allowed disabled:opacity-50",
+            error && "border-red-500 focus:border-red-500 focus:ring-red-500",
             className
           )}
           ref={ref}
@@ -59,7 +59,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         >
           {children}
         </select>
-        {error && <p className="text-[11px] text-[#ef4444]">{error}</p>}
+        {error && <p className="text-[11px] text-red-500">{error}</p>}
       </div>
     );
   }

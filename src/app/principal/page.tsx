@@ -154,6 +154,7 @@ export default function PrincipalPage() {
   });
 
   const activeBroadcast = broadcasts.find((b) => b.isOpen);
+  const pendingCount = applications.filter((a) => a.principalStatus.status === "Pending").length;
 
   return (
     <AppLayout>
@@ -202,6 +203,11 @@ export default function PrincipalPage() {
             </div>
 
             <div className="flex items-center gap-3">
+              {pendingCount > 0 && (
+                <Badge variant="warning" className="text-xs font-mono">
+                  {pendingCount} Awaiting Review
+                </Badge>
+              )}
               <Link href="/principal/settings">
                 <Button variant="secondary" size="sm" className="h-8 text-xs">
                   <Stamp size={13} />

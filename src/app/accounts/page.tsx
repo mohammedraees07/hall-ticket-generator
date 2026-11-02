@@ -146,6 +146,9 @@ export default function AccountsPage() {
   });
 
   const activeBroadcast = broadcasts.find((b) => b.isOpen);
+  const pendingCount = applications.filter(
+    (a) => a.accountsStatus.collegeFees === "Pending" || a.stage === "UNDER_ACCOUNTS_REVIEW"
+  ).length;
 
   return (
     <AppLayout>
@@ -194,6 +197,11 @@ export default function AccountsPage() {
             </div>
 
             <div className="flex items-center gap-2">
+              {pendingCount > 0 && (
+                <Badge variant="warning" className="text-xs font-mono">
+                  {pendingCount} Pending Clearance
+                </Badge>
+              )}
               <Badge variant="neutral" className="text-xs font-mono">
                 {filteredApplications.length} Candidates Displayed
               </Badge>

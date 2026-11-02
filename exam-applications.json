@@ -22,7 +22,7 @@
       "hostelFees": "No Due",
       "busFees": "No Due",
       "fine": "Paid",
-      "updatedAt": "2026-11-02T05:06:59.131Z"
+      "updatedAt": "2026-11-02T07:29:19.175Z"
     },
     "principalStatus": {
       "status": "Approved",
@@ -32,7 +32,7 @@
     "hallTicketId": 1,
     "hallTicketNumber": "HT-26-0001",
     "appliedAt": "2026-10-30T16:21:46.981Z",
-    "updatedAt": "2026-11-02T05:06:59.132Z"
+    "updatedAt": "2026-11-02T07:29:19.176Z"
   },
   {
     "id": 2,

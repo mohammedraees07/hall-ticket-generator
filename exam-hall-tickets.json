@@ -21,7 +21,7 @@
       {
         "subjectCode": "CS401",
         "subjectName": "Design & Analysis of Algorithms",
-        "examDate": "2026-11-01",
+        "examDate": "2026-11-02",
         "startTime": "09:30",
         "endTime": "12:30",
         "room": "Hall C-201"
@@ -29,7 +29,7 @@
       {
         "subjectCode": "CS402",
         "subjectName": "Operating Systems & Concurrency",
-        "examDate": "2026-11-04",
+        "examDate": "2026-11-05",
         "startTime": "09:30",
         "endTime": "12:30",
         "room": "Hall C-201"
@@ -37,7 +37,7 @@
       {
         "subjectCode": "CS403",
         "subjectName": "Database Management Systems",
-        "examDate": "2026-11-08",
+        "examDate": "2026-11-09",
         "startTime": "09:30",
         "endTime": "12:30",
         "room": "Hall C-201"
@@ -45,7 +45,7 @@
       {
         "subjectCode": "CS404",
         "subjectName": "Theory of Computation",
-        "examDate": "2026-11-11",
+        "examDate": "2026-11-12",
         "startTime": "09:30",
         "endTime": "12:30",
         "room": "Hall C-201"
@@ -75,7 +75,7 @@
       {
         "subjectCode": "CS401",
         "subjectName": "Design & Analysis of Algorithms",
-        "examDate": "2026-11-01",
+        "examDate": "2026-11-02",
         "startTime": "09:30",
         "endTime": "12:30",
         "room": "Hall C-201"
@@ -83,7 +83,7 @@
       {
         "subjectCode": "CS402",
         "subjectName": "Operating Systems & Concurrency",
-        "examDate": "2026-11-04",
+        "examDate": "2026-11-05",
         "startTime": "09:30",
         "endTime": "12:30",
         "room": "Hall C-201"
@@ -91,7 +91,7 @@
       {
         "subjectCode": "CS403",
         "subjectName": "Database Management Systems",
-        "examDate": "2026-11-08",
+        "examDate": "2026-11-09",
         "startTime": "09:30",
         "endTime": "12:30",
         "room": "Hall C-201"
@@ -99,7 +99,7 @@
       {
         "subjectCode": "CS404",
         "subjectName": "Theory of Computation",
-        "examDate": "2026-11-11",
+        "examDate": "2026-11-12",
         "startTime": "09:30",
         "endTime": "12:30",
         "room": "Hall C-201"

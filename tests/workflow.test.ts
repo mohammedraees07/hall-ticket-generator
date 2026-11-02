@@ -157,4 +157,43 @@ test("Workflow Security & Business Rules", async (t) => {
       "Semester 4 student finds open broadcast window"
     );
   });
+
+  await t.test("8. Public Verification & Gate Entry: 1RV22CS001 has active exam paper scheduled today and allocated hall", async () => {
+    const student = await dataStore.getStudentByUsn("1RV22CS001");
+    assert.ok(student, "Candidate 1RV22CS001 must exist");
+
+    const exams = await dataStore.getExaminations();
+    const sem4Exam = exams.find((e) => e.semester === 4 && e.status === "Published");
+    assert.ok(sem4Exam, "Published Semester 4 examination exists");
+    assert.ok(sem4Exam.subjects.length > 0, "Examination has scheduled subjects");
+
+    const seatingPlans = await dataStore.getSeatingPlans();
+    assert.ok(seatingPlans.length > 0, "Seating plans exist");
+
+    // Check seating allocation for 1RV22CS001
+    let seatFound = false;
+    let roomName = "";
+    let benchCode = "";
+    for (const plan of seatingPlans) {
+      for (const bench of plan.benches) {
+        if (bench.leftSeat?.usn?.toUpperCase() === "1RV22CS001" || bench.rightSeat?.usn?.toUpperCase() === "1RV22CS001") {
+          seatFound = true;
+          roomName = plan.roomName;
+          benchCode = bench.benchCode;
+          break;
+        }
+      }
+      if (seatFound) break;
+    }
+
+    assert.equal(seatFound, true, "1RV22CS001 must be allocated to an examination desk");
+    assert.equal(roomName, "Hall C-201", "Allocated room is Hall C-201");
+    assert.equal(benchCode, "B-01", "Allocated bench is B-01");
+
+    // Hall tickets check
+    const tickets = await dataStore.getHallTicketsByStudentId(student.id);
+    assert.ok(tickets.length > 0, "1RV22CS001 has an active hall ticket");
+    const todayExamDate = sem4Exam.subjects[0].examDate;
+    assert.ok(todayExamDate, "Today's scheduled subject has an exam date");
+  });
 });

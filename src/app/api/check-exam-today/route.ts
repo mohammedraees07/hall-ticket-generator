@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { dataStore } from "@/lib/data-store";
+import { dataStore, ExamSubject } from "@/lib/data-store";
 import { handleApiError, ApiError } from "@/lib/errors/api-error";
 
 export async function GET(req: NextRequest) {
@@ -27,26 +27,42 @@ export async function GET(req: NextRequest) {
     const isAttendanceEligible = student.attendancePercentage >= settings.minAttendance;
     const isCompliant = isFeeCleared && isAttendanceEligible;
 
-    // Determine target check date (default to today or fallback to first subject's date if requested)
-    const todayStr = dateParam || new Date().toISOString().split("T")[0];
+    // Determine target check date (default to India Standard Time / college local date)
+    const istToday = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(new Date());
+    const utcToday = new Date().toISOString().split("T")[0];
+    const todayStr = dateParam || istToday || utcToday;
 
     // Find student's hall tickets
     const hallTickets = await dataStore.getHallTicketsByStudentId(student.id);
     const activeTicket = hallTickets[0] || null;
 
-    // Subjects list from hall ticket or semester examinations
-    let candidateSubjects = activeTicket?.subjects || [];
-    if (candidateSubjects.length === 0) {
-      const exams = await dataStore.getExaminations();
-      const semExam = exams.find((e) => e.semester === student.semester) || exams[0];
-      if (semExam) {
-        candidateSubjects = semExam.subjects;
+    // Retrieve active examination schedule
+    const exams = await dataStore.getExaminations();
+    const activeExam =
+      (activeTicket?.examinationId ? exams.find((e) => e.id === activeTicket.examinationId) : null) ||
+      exams.find((e) => e.semester === student.semester && e.status === "Published") ||
+      exams.find((e) => e.semester === student.semester) ||
+      exams[0];
+
+    // Subjects list: Synchronize with live active examination timetable
+    let candidateSubjects: ExamSubject[] = [];
+    if (activeExam?.subjects && activeExam.subjects.length > 0) {
+      candidateSubjects = [...activeExam.subjects];
+      // If ticket has additional subjects (e.g. Arrears / Backlogs) not in the main exam, merge them
+      if (activeTicket?.subjects) {
+        for (const tSub of activeTicket.subjects) {
+          if (!candidateSubjects.some((s) => s.subjectCode.toUpperCase() === tSub.subjectCode.toUpperCase())) {
+            candidateSubjects.push(tSub);
+          }
+        }
       }
+    } else if (activeTicket?.subjects && activeTicket.subjects.length > 0) {
+      candidateSubjects = [...activeTicket.subjects];
     }
 
     // Look for subject scheduled on check date
     const todaySubject = candidateSubjects.find(
-      (sub) => sub.examDate === todayStr
+      (sub) => sub.examDate === todayStr || (dateParam ? sub.examDate === dateParam : false)
     ) || null;
 
     // Find next upcoming exam if not today
@@ -84,6 +100,10 @@ export async function GET(req: NextRequest) {
       }
       if (seatAllocation) break;
     }
+
+    // Determine allocated room & bench
+    const allocatedHall = seatAllocation?.roomName || todaySubject?.room || candidateSubjects[0]?.room || activeTicket?.center || "Hall C-201";
+    const allocatedBench = seatAllocation ? `${seatAllocation.benchCode} (${seatAllocation.position})` : (todaySubject ? "General Desk" : "Unassigned Desk");
 
     // Determine Entry Clearance
     let entryPermitted = false;
@@ -125,11 +145,21 @@ export async function GET(req: NextRequest) {
       entryPermitted,
       gateStatus,
       gatePassMessage,
+      allocatedHall,
+      allocatedBench,
+      seatAllocation: seatAllocation
+        ? {
+            roomName: seatAllocation.roomName,
+            benchCode: seatAllocation.benchCode,
+            position: seatAllocation.position,
+            allocatedBench,
+          }
+        : null,
       todaySubject: todaySubject
         ? {
             ...todaySubject,
-            allocatedRoom: seatAllocation?.roomName || todaySubject.room,
-            allocatedBench: seatAllocation ? `${seatAllocation.benchCode} (${seatAllocation.position})` : "Unassigned Desk",
+            allocatedRoom: seatAllocation?.roomName || todaySubject.room || allocatedHall,
+            allocatedBench,
           }
         : null,
       nextExam,

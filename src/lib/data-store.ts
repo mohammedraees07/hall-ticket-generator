@@ -79,7 +79,19 @@ function loadDiskHallTickets(): HallTicket[] {
   try {
     if (typeof window === "undefined" && fs.existsSync(HALL_TICKETS_FILE_PATH)) {
       const raw = fs.readFileSync(HALL_TICKETS_FILE_PATH, "utf-8");
-      return JSON.parse(raw);
+      const list: HallTicket[] = JSON.parse(raw);
+      if (Array.isArray(list) && list.length > 0) {
+        return list.map((t) => {
+          if (t.examinationId === 1 && typeof examinations !== "undefined" && examinations[0]) {
+            return {
+              ...t,
+              subjects: examinations[0].subjects,
+            };
+          }
+          return t;
+        });
+      }
+      return list;
     }
   } catch (err) {
     console.warn("Could not read exam-hall-tickets.json:", err);
@@ -478,11 +490,11 @@ let students: Student[] = [
   },
 ];
 
-// Dynamic date helpers anchored to current real system date
-const getOffsetDate = (daysOffset: number = 0): string => {
+// Dynamic date helpers anchored to current real system date (using IST college timezone)
+export const getOffsetDate = (daysOffset: number = 0): string => {
   const d = new Date();
   d.setDate(d.getDate() + daysOffset);
-  return d.toISOString().split("T")[0];
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(d);
 };
 
 const getOffsetIso = (daysOffset: number = 0, hoursOffset: number = 0): string => {
@@ -608,7 +620,19 @@ function loadDiskSeatingPlans(): SeatingPlan[] {
   try {
     if (typeof window === "undefined" && fs.existsSync(SEATING_PLANS_FILE_PATH)) {
       const raw = fs.readFileSync(SEATING_PLANS_FILE_PATH, "utf-8");
-      return JSON.parse(raw);
+      const list: SeatingPlan[] = JSON.parse(raw);
+      if (Array.isArray(list) && list.length > 0) {
+        return list.map((p) => {
+          if (p.examinationId === 1 && typeof examinations !== "undefined" && examinations[0]) {
+            return {
+              ...p,
+              examDate: examinations[0].subjects[0]?.examDate || getOffsetDate(0),
+            };
+          }
+          return p;
+        });
+      }
+      return list;
     }
   } catch (err) {
     console.warn("Could not read exam-seating-plans.json:", err);
